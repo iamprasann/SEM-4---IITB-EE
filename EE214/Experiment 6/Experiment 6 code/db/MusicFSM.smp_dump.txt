@@ -1,0 +1,9 @@
+
+State Machine - |music|y_present
+Name y_present.ni y_present.re y_present.ma y_present.ga y_present.sa y_present.Silent 
+y_present.Silent 0 0 0 0 0 0 
+y_present.sa 0 0 0 0 1 1 
+y_present.ga 0 0 0 1 0 1 
+y_present.ma 0 0 1 0 0 1 
+y_present.re 0 1 0 0 0 1 
+y_present.ni 1 0 0 0 0 1 

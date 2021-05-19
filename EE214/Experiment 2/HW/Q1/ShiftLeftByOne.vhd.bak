@@ -1,0 +1,15 @@
+library ieee;
+use ieee.std_logic_1164.all;
+entity ShiftLeftByOne is
+port (X: in std_logic_vector(7 downto 0);
+S: in std_logic;
+Y: out std_logic_vector(7 downto 0)
+);
+end entity ShiftLeftByOne;
+architecture Easy of ShiftLeftByOne is
+begin
+Y(7) <= ___ when ____ else ____;
+.......
+.......
+.......
+end Easy;

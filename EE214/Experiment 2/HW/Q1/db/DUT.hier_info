@@ -1,0 +1,54 @@
+|DUT
+input_vector[0] => ShiftLeftByOne:add_instance.X[0]
+input_vector[1] => ShiftLeftByOne:add_instance.X[1]
+input_vector[2] => ShiftLeftByOne:add_instance.X[2]
+input_vector[3] => ShiftLeftByOne:add_instance.X[3]
+input_vector[4] => ShiftLeftByOne:add_instance.X[4]
+input_vector[5] => ShiftLeftByOne:add_instance.X[5]
+input_vector[6] => ShiftLeftByOne:add_instance.X[6]
+input_vector[7] => ShiftLeftByOne:add_instance.X[7]
+input_vector[8] => ShiftLeftByOne:add_instance.S
+output_vector[0] << ShiftLeftByOne:add_instance.Y[0]
+output_vector[1] << ShiftLeftByOne:add_instance.Y[1]
+output_vector[2] << ShiftLeftByOne:add_instance.Y[2]
+output_vector[3] << ShiftLeftByOne:add_instance.Y[3]
+output_vector[4] << ShiftLeftByOne:add_instance.Y[4]
+output_vector[5] << ShiftLeftByOne:add_instance.Y[5]
+output_vector[6] << ShiftLeftByOne:add_instance.Y[6]
+output_vector[7] << ShiftLeftByOne:add_instance.Y[7]
+
+
+|DUT|ShiftLeftByOne:add_instance
+X[0] => Y.DATAB
+X[0] => Y.DATAA
+X[1] => Y.DATAB
+X[1] => Y.DATAA
+X[2] => Y.DATAB
+X[2] => Y.DATAA
+X[3] => Y.DATAB
+X[3] => Y.DATAA
+X[4] => Y.DATAB
+X[4] => Y.DATAA
+X[5] => Y.DATAB
+X[5] => Y.DATAA
+X[6] => Y.DATAB
+X[6] => Y.DATAA
+X[7] => Y.DATAA
+S => Y.OUTPUTSELECT
+S => Y.OUTPUTSELECT
+S => Y.OUTPUTSELECT
+S => Y.OUTPUTSELECT
+S => Y.OUTPUTSELECT
+S => Y.OUTPUTSELECT
+S => Y.OUTPUTSELECT
+S => Y.OUTPUTSELECT
+Y[0] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[1] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[2] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[3] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[4] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[5] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[6] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[7] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -1,0 +1,1600 @@
+|DUT
+input_vector[0] => Add_Subtract_Primes:add_instance.B0
+input_vector[1] => Add_Subtract_Primes:add_instance.B1
+input_vector[2] => Add_Subtract_Primes:add_instance.B2
+input_vector[3] => Add_Subtract_Primes:add_instance.B3
+input_vector[4] => Add_Subtract_Primes:add_instance.A0
+input_vector[5] => Add_Subtract_Primes:add_instance.A1
+input_vector[6] => Add_Subtract_Primes:add_instance.A2
+input_vector[7] => Add_Subtract_Primes:add_instance.A3
+output_vector[0] << Add_Subtract_Primes:add_instance.R0
+output_vector[1] << Add_Subtract_Primes:add_instance.R1
+output_vector[2] << Add_Subtract_Primes:add_instance.R2
+output_vector[3] << Add_Subtract_Primes:add_instance.R3
+output_vector[4] << Add_Subtract_Primes:add_instance.Cout
+output_vector[5] << Add_Subtract_Primes:add_instance.L2
+output_vector[6] << Add_Subtract_Primes:add_instance.L1
+
+
+|DUT|Add_Subtract_Primes:add_instance
+A3 => Check_Prime:logical1.A3
+A3 => Four_Bit_Adder:sub.A3
+A3 => Four_Bit_Adder:add.A3
+A2 => Check_Prime:logical1.A2
+A2 => Four_Bit_Adder:sub.A2
+A2 => Four_Bit_Adder:add.A2
+A1 => Check_Prime:logical1.A1
+A1 => Four_Bit_Adder:sub.A1
+A1 => Four_Bit_Adder:add.A1
+A0 => Check_Prime:logical1.A0
+A0 => Four_Bit_Adder:sub.A0
+A0 => Four_Bit_Adder:add.A0
+B3 => Check_Prime:logical2.A3
+B3 => TwosComp:minus_b.X4
+B3 => Four_Bit_Adder:add.B3
+B2 => Check_Prime:logical2.A2
+B2 => TwosComp:minus_b.X3
+B2 => Four_Bit_Adder:add.B2
+B1 => Check_Prime:logical2.A1
+B1 => TwosComp:minus_b.X2
+B1 => Four_Bit_Adder:add.B1
+B0 => Check_Prime:logical2.A0
+B0 => TwosComp:minus_b.X1
+B0 => Four_Bit_Adder:add.B0
+L1 <= Check_Prime:logical1.Y
+L2 <= Check_Prime:logical2.Y
+R0 <= FourIPMUX:mux1.Y
+R1 <= FourIPMUX:mux2.Y
+R2 <= FourIPMUX:mux3.Y
+R3 <= FourIPMUX:mux4.Y
+Cout <= FourIPMUX:mux5.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical1
+A3 => INVERTER:not3.A
+A2 => INVERTER:not2.A
+A2 => AND_3:and3.B
+A2 => AND_3:and4.A
+A1 => INVERTER:not1.A
+A1 => AND_3:and1.B
+A1 => AND_3:and2.C
+A0 => AND_3:and1.C
+A0 => AND_3:and3.C
+A0 => AND_3:and4.C
+Y <= OR_4:or_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical1|INVERTER:not1
+A => Y.DATAIN
+Y <= A.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical1|INVERTER:not2
+A => Y.DATAIN
+Y <= A.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical1|INVERTER:not3
+A => Y.DATAIN
+Y <= A.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical1|AND_3:and1
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and_final.A
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical1|AND_3:and1|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical1|AND_3:and1|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical1|AND_3:and2
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and_final.A
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical1|AND_3:and2|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical1|AND_3:and2|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical1|AND_3:and3
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and_final.A
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical1|AND_3:and3|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical1|AND_3:and3|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical1|AND_3:and4
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and_final.A
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical1|AND_3:and4|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical1|AND_3:and4|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical1|OR_4:or_final
+A => OR_2:or1.A
+B => OR_2:or1.B
+C => OR_2:or2.A
+D => OR_2:or2.B
+Y <= OR_2:or_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical1|OR_4:or_final|OR_2:or1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical1|OR_4:or_final|OR_2:or2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical1|OR_4:or_final|OR_2:or_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical2
+A3 => INVERTER:not3.A
+A2 => INVERTER:not2.A
+A2 => AND_3:and3.B
+A2 => AND_3:and4.A
+A1 => INVERTER:not1.A
+A1 => AND_3:and1.B
+A1 => AND_3:and2.C
+A0 => AND_3:and1.C
+A0 => AND_3:and3.C
+A0 => AND_3:and4.C
+Y <= OR_4:or_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical2|INVERTER:not1
+A => Y.DATAIN
+Y <= A.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical2|INVERTER:not2
+A => Y.DATAIN
+Y <= A.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical2|INVERTER:not3
+A => Y.DATAIN
+Y <= A.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical2|AND_3:and1
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and_final.A
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical2|AND_3:and1|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical2|AND_3:and1|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical2|AND_3:and2
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and_final.A
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical2|AND_3:and2|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical2|AND_3:and2|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical2|AND_3:and3
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and_final.A
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical2|AND_3:and3|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical2|AND_3:and3|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical2|AND_3:and4
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and_final.A
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical2|AND_3:and4|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical2|AND_3:and4|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical2|OR_4:or_final
+A => OR_2:or1.A
+B => OR_2:or1.B
+C => OR_2:or2.A
+D => OR_2:or2.B
+Y <= OR_2:or_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical2|OR_4:or_final|OR_2:or1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical2|OR_4:or_final|OR_2:or2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Check_Prime:logical2|OR_4:or_final|OR_2:or_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b
+X1 => INVERTER:inv1.A
+X2 => INVERTER:inv2.A
+X3 => INVERTER:inv3.A
+X4 => INVERTER:inv4.A
+Y1 <= Four_Bit_Adder:final_comp.R0
+Y2 <= Four_Bit_Adder:final_comp.R1
+Y3 <= Four_Bit_Adder:final_comp.R2
+Y4 <= Four_Bit_Adder:final_comp.R3
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|INVERTER:inv1
+A => Y.DATAIN
+Y <= A.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|INVERTER:inv2
+A => Y.DATAIN
+Y <= A.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|INVERTER:inv3
+A => Y.DATAIN
+Y <= A.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|INVERTER:inv4
+A => Y.DATAIN
+Y <= A.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|Four_Bit_Adder:final_comp
+A0 => Full_Adder:fa0.A
+A1 => Full_Adder:fa1.A
+A2 => Full_Adder:fa2.A
+A3 => Full_Adder:fa3.A
+B0 => Full_Adder:fa0.B
+B1 => Full_Adder:fa1.B
+B2 => Full_Adder:fa2.B
+B3 => Full_Adder:fa3.B
+R0 <= Full_Adder:fa0.S
+R1 <= Full_Adder:fa1.S
+R2 <= Full_Adder:fa2.S
+R3 <= Full_Adder:fa3.S
+Cout <= Full_Adder:fa3.Cout
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|Four_Bit_Adder:final_comp|Full_Adder:fa0
+A => HALF_ADDER:ha.A
+B => HALF_ADDER:ha.B
+Cin => AND_2:a1.B
+Cin => XOR_2:x1.B
+S <= XOR_2:x1.Y
+Cout <= OR_2:o1.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|Four_Bit_Adder:final_comp|Full_Adder:fa0|HALF_ADDER:ha
+A => S.IN0
+A => C.IN0
+B => S.IN1
+B => C.IN1
+S <= S.DB_MAX_OUTPUT_PORT_TYPE
+C <= C.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|Four_Bit_Adder:final_comp|Full_Adder:fa0|AND_2:a1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|Four_Bit_Adder:final_comp|Full_Adder:fa0|OR_2:o1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|Four_Bit_Adder:final_comp|Full_Adder:fa0|XOR_2:x1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|Four_Bit_Adder:final_comp|Full_Adder:fa1
+A => HALF_ADDER:ha.A
+B => HALF_ADDER:ha.B
+Cin => AND_2:a1.B
+Cin => XOR_2:x1.B
+S <= XOR_2:x1.Y
+Cout <= OR_2:o1.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|Four_Bit_Adder:final_comp|Full_Adder:fa1|HALF_ADDER:ha
+A => S.IN0
+A => C.IN0
+B => S.IN1
+B => C.IN1
+S <= S.DB_MAX_OUTPUT_PORT_TYPE
+C <= C.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|Four_Bit_Adder:final_comp|Full_Adder:fa1|AND_2:a1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|Four_Bit_Adder:final_comp|Full_Adder:fa1|OR_2:o1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|Four_Bit_Adder:final_comp|Full_Adder:fa1|XOR_2:x1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|Four_Bit_Adder:final_comp|Full_Adder:fa2
+A => HALF_ADDER:ha.A
+B => HALF_ADDER:ha.B
+Cin => AND_2:a1.B
+Cin => XOR_2:x1.B
+S <= XOR_2:x1.Y
+Cout <= OR_2:o1.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|Four_Bit_Adder:final_comp|Full_Adder:fa2|HALF_ADDER:ha
+A => S.IN0
+A => C.IN0
+B => S.IN1
+B => C.IN1
+S <= S.DB_MAX_OUTPUT_PORT_TYPE
+C <= C.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|Four_Bit_Adder:final_comp|Full_Adder:fa2|AND_2:a1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|Four_Bit_Adder:final_comp|Full_Adder:fa2|OR_2:o1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|Four_Bit_Adder:final_comp|Full_Adder:fa2|XOR_2:x1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|Four_Bit_Adder:final_comp|Full_Adder:fa3
+A => HALF_ADDER:ha.A
+B => HALF_ADDER:ha.B
+Cin => AND_2:a1.B
+Cin => XOR_2:x1.B
+S <= XOR_2:x1.Y
+Cout <= OR_2:o1.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|Four_Bit_Adder:final_comp|Full_Adder:fa3|HALF_ADDER:ha
+A => S.IN0
+A => C.IN0
+B => S.IN1
+B => C.IN1
+S <= S.DB_MAX_OUTPUT_PORT_TYPE
+C <= C.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|Four_Bit_Adder:final_comp|Full_Adder:fa3|AND_2:a1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|Four_Bit_Adder:final_comp|Full_Adder:fa3|OR_2:o1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|TwosComp:minus_b|Four_Bit_Adder:final_comp|Full_Adder:fa3|XOR_2:x1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:sub
+A0 => Full_Adder:fa0.A
+A1 => Full_Adder:fa1.A
+A2 => Full_Adder:fa2.A
+A3 => Full_Adder:fa3.A
+B0 => Full_Adder:fa0.B
+B1 => Full_Adder:fa1.B
+B2 => Full_Adder:fa2.B
+B3 => Full_Adder:fa3.B
+R0 <= Full_Adder:fa0.S
+R1 <= Full_Adder:fa1.S
+R2 <= Full_Adder:fa2.S
+R3 <= Full_Adder:fa3.S
+Cout <= Full_Adder:fa3.Cout
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:sub|Full_Adder:fa0
+A => HALF_ADDER:ha.A
+B => HALF_ADDER:ha.B
+Cin => AND_2:a1.B
+Cin => XOR_2:x1.B
+S <= XOR_2:x1.Y
+Cout <= OR_2:o1.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:sub|Full_Adder:fa0|HALF_ADDER:ha
+A => S.IN0
+A => C.IN0
+B => S.IN1
+B => C.IN1
+S <= S.DB_MAX_OUTPUT_PORT_TYPE
+C <= C.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:sub|Full_Adder:fa0|AND_2:a1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:sub|Full_Adder:fa0|OR_2:o1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:sub|Full_Adder:fa0|XOR_2:x1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:sub|Full_Adder:fa1
+A => HALF_ADDER:ha.A
+B => HALF_ADDER:ha.B
+Cin => AND_2:a1.B
+Cin => XOR_2:x1.B
+S <= XOR_2:x1.Y
+Cout <= OR_2:o1.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:sub|Full_Adder:fa1|HALF_ADDER:ha
+A => S.IN0
+A => C.IN0
+B => S.IN1
+B => C.IN1
+S <= S.DB_MAX_OUTPUT_PORT_TYPE
+C <= C.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:sub|Full_Adder:fa1|AND_2:a1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:sub|Full_Adder:fa1|OR_2:o1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:sub|Full_Adder:fa1|XOR_2:x1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:sub|Full_Adder:fa2
+A => HALF_ADDER:ha.A
+B => HALF_ADDER:ha.B
+Cin => AND_2:a1.B
+Cin => XOR_2:x1.B
+S <= XOR_2:x1.Y
+Cout <= OR_2:o1.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:sub|Full_Adder:fa2|HALF_ADDER:ha
+A => S.IN0
+A => C.IN0
+B => S.IN1
+B => C.IN1
+S <= S.DB_MAX_OUTPUT_PORT_TYPE
+C <= C.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:sub|Full_Adder:fa2|AND_2:a1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:sub|Full_Adder:fa2|OR_2:o1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:sub|Full_Adder:fa2|XOR_2:x1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:sub|Full_Adder:fa3
+A => HALF_ADDER:ha.A
+B => HALF_ADDER:ha.B
+Cin => AND_2:a1.B
+Cin => XOR_2:x1.B
+S <= XOR_2:x1.Y
+Cout <= OR_2:o1.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:sub|Full_Adder:fa3|HALF_ADDER:ha
+A => S.IN0
+A => C.IN0
+B => S.IN1
+B => C.IN1
+S <= S.DB_MAX_OUTPUT_PORT_TYPE
+C <= C.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:sub|Full_Adder:fa3|AND_2:a1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:sub|Full_Adder:fa3|OR_2:o1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:sub|Full_Adder:fa3|XOR_2:x1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:add
+A0 => Full_Adder:fa0.A
+A1 => Full_Adder:fa1.A
+A2 => Full_Adder:fa2.A
+A3 => Full_Adder:fa3.A
+B0 => Full_Adder:fa0.B
+B1 => Full_Adder:fa1.B
+B2 => Full_Adder:fa2.B
+B3 => Full_Adder:fa3.B
+R0 <= Full_Adder:fa0.S
+R1 <= Full_Adder:fa1.S
+R2 <= Full_Adder:fa2.S
+R3 <= Full_Adder:fa3.S
+Cout <= Full_Adder:fa3.Cout
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:add|Full_Adder:fa0
+A => HALF_ADDER:ha.A
+B => HALF_ADDER:ha.B
+Cin => AND_2:a1.B
+Cin => XOR_2:x1.B
+S <= XOR_2:x1.Y
+Cout <= OR_2:o1.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:add|Full_Adder:fa0|HALF_ADDER:ha
+A => S.IN0
+A => C.IN0
+B => S.IN1
+B => C.IN1
+S <= S.DB_MAX_OUTPUT_PORT_TYPE
+C <= C.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:add|Full_Adder:fa0|AND_2:a1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:add|Full_Adder:fa0|OR_2:o1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:add|Full_Adder:fa0|XOR_2:x1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:add|Full_Adder:fa1
+A => HALF_ADDER:ha.A
+B => HALF_ADDER:ha.B
+Cin => AND_2:a1.B
+Cin => XOR_2:x1.B
+S <= XOR_2:x1.Y
+Cout <= OR_2:o1.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:add|Full_Adder:fa1|HALF_ADDER:ha
+A => S.IN0
+A => C.IN0
+B => S.IN1
+B => C.IN1
+S <= S.DB_MAX_OUTPUT_PORT_TYPE
+C <= C.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:add|Full_Adder:fa1|AND_2:a1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:add|Full_Adder:fa1|OR_2:o1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:add|Full_Adder:fa1|XOR_2:x1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:add|Full_Adder:fa2
+A => HALF_ADDER:ha.A
+B => HALF_ADDER:ha.B
+Cin => AND_2:a1.B
+Cin => XOR_2:x1.B
+S <= XOR_2:x1.Y
+Cout <= OR_2:o1.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:add|Full_Adder:fa2|HALF_ADDER:ha
+A => S.IN0
+A => C.IN0
+B => S.IN1
+B => C.IN1
+S <= S.DB_MAX_OUTPUT_PORT_TYPE
+C <= C.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:add|Full_Adder:fa2|AND_2:a1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:add|Full_Adder:fa2|OR_2:o1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:add|Full_Adder:fa2|XOR_2:x1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:add|Full_Adder:fa3
+A => HALF_ADDER:ha.A
+B => HALF_ADDER:ha.B
+Cin => AND_2:a1.B
+Cin => XOR_2:x1.B
+S <= XOR_2:x1.Y
+Cout <= OR_2:o1.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:add|Full_Adder:fa3|HALF_ADDER:ha
+A => S.IN0
+A => C.IN0
+B => S.IN1
+B => C.IN1
+S <= S.DB_MAX_OUTPUT_PORT_TYPE
+C <= C.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:add|Full_Adder:fa3|AND_2:a1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:add|Full_Adder:fa3|OR_2:o1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|Four_Bit_Adder:add|Full_Adder:fa3|XOR_2:x1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux1
+X1 => AND_4:and1.A
+X2 => AND_4:and2.A
+X3 => AND_4:and3.A
+X4 => AND_4:and4.A
+S1 => INVERTER:inv1.A
+S1 => AND_4:and2.B
+S1 => AND_4:and4.B
+S2 => INVERTER:inv2.A
+S2 => AND_4:and3.C
+S2 => AND_4:and4.C
+Y <= OR_4:or_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux1|INVERTER:inv1
+A => Y.DATAIN
+Y <= A.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux1|INVERTER:inv2
+A => Y.DATAIN
+Y <= A.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux1|AND_4:and1
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and2.A
+D => AND_2:and2.B
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux1|AND_4:and1|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux1|AND_4:and1|AND_2:and2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux1|AND_4:and1|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux1|AND_4:and2
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and2.A
+D => AND_2:and2.B
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux1|AND_4:and2|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux1|AND_4:and2|AND_2:and2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux1|AND_4:and2|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux1|AND_4:and3
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and2.A
+D => AND_2:and2.B
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux1|AND_4:and3|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux1|AND_4:and3|AND_2:and2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux1|AND_4:and3|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux1|AND_4:and4
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and2.A
+D => AND_2:and2.B
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux1|AND_4:and4|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux1|AND_4:and4|AND_2:and2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux1|AND_4:and4|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux1|OR_4:or_final
+A => OR_2:or1.A
+B => OR_2:or1.B
+C => OR_2:or2.A
+D => OR_2:or2.B
+Y <= OR_2:or_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux1|OR_4:or_final|OR_2:or1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux1|OR_4:or_final|OR_2:or2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux1|OR_4:or_final|OR_2:or_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux2
+X1 => AND_4:and1.A
+X2 => AND_4:and2.A
+X3 => AND_4:and3.A
+X4 => AND_4:and4.A
+S1 => INVERTER:inv1.A
+S1 => AND_4:and2.B
+S1 => AND_4:and4.B
+S2 => INVERTER:inv2.A
+S2 => AND_4:and3.C
+S2 => AND_4:and4.C
+Y <= OR_4:or_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux2|INVERTER:inv1
+A => Y.DATAIN
+Y <= A.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux2|INVERTER:inv2
+A => Y.DATAIN
+Y <= A.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux2|AND_4:and1
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and2.A
+D => AND_2:and2.B
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux2|AND_4:and1|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux2|AND_4:and1|AND_2:and2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux2|AND_4:and1|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux2|AND_4:and2
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and2.A
+D => AND_2:and2.B
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux2|AND_4:and2|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux2|AND_4:and2|AND_2:and2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux2|AND_4:and2|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux2|AND_4:and3
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and2.A
+D => AND_2:and2.B
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux2|AND_4:and3|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux2|AND_4:and3|AND_2:and2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux2|AND_4:and3|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux2|AND_4:and4
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and2.A
+D => AND_2:and2.B
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux2|AND_4:and4|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux2|AND_4:and4|AND_2:and2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux2|AND_4:and4|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux2|OR_4:or_final
+A => OR_2:or1.A
+B => OR_2:or1.B
+C => OR_2:or2.A
+D => OR_2:or2.B
+Y <= OR_2:or_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux2|OR_4:or_final|OR_2:or1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux2|OR_4:or_final|OR_2:or2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux2|OR_4:or_final|OR_2:or_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux3
+X1 => AND_4:and1.A
+X2 => AND_4:and2.A
+X3 => AND_4:and3.A
+X4 => AND_4:and4.A
+S1 => INVERTER:inv1.A
+S1 => AND_4:and2.B
+S1 => AND_4:and4.B
+S2 => INVERTER:inv2.A
+S2 => AND_4:and3.C
+S2 => AND_4:and4.C
+Y <= OR_4:or_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux3|INVERTER:inv1
+A => Y.DATAIN
+Y <= A.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux3|INVERTER:inv2
+A => Y.DATAIN
+Y <= A.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux3|AND_4:and1
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and2.A
+D => AND_2:and2.B
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux3|AND_4:and1|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux3|AND_4:and1|AND_2:and2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux3|AND_4:and1|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux3|AND_4:and2
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and2.A
+D => AND_2:and2.B
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux3|AND_4:and2|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux3|AND_4:and2|AND_2:and2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux3|AND_4:and2|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux3|AND_4:and3
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and2.A
+D => AND_2:and2.B
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux3|AND_4:and3|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux3|AND_4:and3|AND_2:and2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux3|AND_4:and3|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux3|AND_4:and4
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and2.A
+D => AND_2:and2.B
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux3|AND_4:and4|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux3|AND_4:and4|AND_2:and2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux3|AND_4:and4|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux3|OR_4:or_final
+A => OR_2:or1.A
+B => OR_2:or1.B
+C => OR_2:or2.A
+D => OR_2:or2.B
+Y <= OR_2:or_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux3|OR_4:or_final|OR_2:or1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux3|OR_4:or_final|OR_2:or2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux3|OR_4:or_final|OR_2:or_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux4
+X1 => AND_4:and1.A
+X2 => AND_4:and2.A
+X3 => AND_4:and3.A
+X4 => AND_4:and4.A
+S1 => INVERTER:inv1.A
+S1 => AND_4:and2.B
+S1 => AND_4:and4.B
+S2 => INVERTER:inv2.A
+S2 => AND_4:and3.C
+S2 => AND_4:and4.C
+Y <= OR_4:or_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux4|INVERTER:inv1
+A => Y.DATAIN
+Y <= A.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux4|INVERTER:inv2
+A => Y.DATAIN
+Y <= A.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux4|AND_4:and1
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and2.A
+D => AND_2:and2.B
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux4|AND_4:and1|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux4|AND_4:and1|AND_2:and2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux4|AND_4:and1|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux4|AND_4:and2
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and2.A
+D => AND_2:and2.B
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux4|AND_4:and2|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux4|AND_4:and2|AND_2:and2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux4|AND_4:and2|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux4|AND_4:and3
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and2.A
+D => AND_2:and2.B
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux4|AND_4:and3|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux4|AND_4:and3|AND_2:and2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux4|AND_4:and3|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux4|AND_4:and4
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and2.A
+D => AND_2:and2.B
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux4|AND_4:and4|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux4|AND_4:and4|AND_2:and2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux4|AND_4:and4|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux4|OR_4:or_final
+A => OR_2:or1.A
+B => OR_2:or1.B
+C => OR_2:or2.A
+D => OR_2:or2.B
+Y <= OR_2:or_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux4|OR_4:or_final|OR_2:or1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux4|OR_4:or_final|OR_2:or2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux4|OR_4:or_final|OR_2:or_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|INVERTER:inv
+A => Y.DATAIN
+Y <= A.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux5
+X1 => AND_4:and1.A
+X2 => AND_4:and2.A
+X3 => AND_4:and3.A
+X4 => AND_4:and4.A
+S1 => INVERTER:inv1.A
+S1 => AND_4:and2.B
+S1 => AND_4:and4.B
+S2 => INVERTER:inv2.A
+S2 => AND_4:and3.C
+S2 => AND_4:and4.C
+Y <= OR_4:or_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux5|INVERTER:inv1
+A => Y.DATAIN
+Y <= A.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux5|INVERTER:inv2
+A => Y.DATAIN
+Y <= A.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux5|AND_4:and1
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and2.A
+D => AND_2:and2.B
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux5|AND_4:and1|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux5|AND_4:and1|AND_2:and2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux5|AND_4:and1|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux5|AND_4:and2
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and2.A
+D => AND_2:and2.B
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux5|AND_4:and2|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux5|AND_4:and2|AND_2:and2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux5|AND_4:and2|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux5|AND_4:and3
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and2.A
+D => AND_2:and2.B
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux5|AND_4:and3|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux5|AND_4:and3|AND_2:and2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux5|AND_4:and3|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux5|AND_4:and4
+A => AND_2:and1.A
+B => AND_2:and1.B
+C => AND_2:and2.A
+D => AND_2:and2.B
+Y <= AND_2:and_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux5|AND_4:and4|AND_2:and1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux5|AND_4:and4|AND_2:and2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux5|AND_4:and4|AND_2:and_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux5|OR_4:or_final
+A => OR_2:or1.A
+B => OR_2:or1.B
+C => OR_2:or2.A
+D => OR_2:or2.B
+Y <= OR_2:or_final.Y
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux5|OR_4:or_final|OR_2:or1
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux5|OR_4:or_final|OR_2:or2
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DUT|Add_Subtract_Primes:add_instance|FourIPMUX:mux5|OR_4:or_final|OR_2:or_final
+A => Y.IN0
+B => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+

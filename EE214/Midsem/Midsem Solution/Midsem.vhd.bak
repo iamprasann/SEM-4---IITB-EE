@@ -1,0 +1,22 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+library work;
+use work.Gates.all;
+
+entity Midsem is
+	port(A3, A2, A1, A0, B3, B2, B1, B0: in std_logic; Y5, Y4, Y3, Y2, Y1, Y0: out std_logic);
+end entity Midsem;
+
+architecture Struct of Midsem is
+
+	component Full_Adder is
+		port (A, B, Cin: in std_logic; S, Cout: out std_logic);
+	end component Full_Adder;
+	
+	component Four_Bit_Adder  is
+	port (A0, A1, A2, A3, B0, B1, B2, B3: in std_logic; R0, R1, R2, R3, Cout: out std_logic);
+	end component Four_Bit_Adder;
+	
+	component 
+	

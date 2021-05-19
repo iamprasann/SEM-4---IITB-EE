@@ -1,0 +1,92 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+library work;
+use work.D_FF.all;
+use work.Gates.all;
+
+entity SequenceDetector is
+	port(RST, IP, CLK: in std_logic; OP: out std_logic);
+end entity SequenceDetector;
+
+architecture struct of SequenceDetector is
+
+	signal RST_bar, IP_bar, P2_bar, P1_bar, P0_bar, N2, N1, N0, 
+	MIN1, MIN2, MIN3, MIN4, MIN5, MIN6, MIN7, MIN8, P2, P1, P0 : std_logic;
+	
+	component AND_3 is
+		port(A, B, C: in std_logic; Y: out std_logic);
+	end component;
+
+	component AND_4 is
+		port(A, B, C, D: in std_logic; Y: out std_logic);
+	end component;
+
+	component OR_4 is
+		port(A, B, C, D: in std_logic; Y: out std_logic);
+	end component;
+	
+	
+begin
+	INV_RST: INVERTER
+		port map(RST, RST_bar);
+	INV_IP: INVERTER
+		port map(IP, IP_bar);
+	INV_P0: INVERTER
+		port map(P0, P0_bar);
+	INV_P1: INVERTER
+		port map(P1, P1_bar);
+	INV_P2: INVERTER
+		port map(P2, P2_bar);
+	
+	--Here you will define the combinational block L2 whoich is the IPut to the FF0--
+	
+	N0_1: AND_3
+		port map(P2, RST_bar, IP_bar, MIN1);
+	N0_2: AND_3
+		port map(P1_bar, RST_bar, IP_bar, MIN2);
+	N0_3: AND_3
+		port map(P0, RST_bar, IP_bar, MIN3);
+	N0_4: AND_4
+		port map(P2_bar, P1_bar, P0, RST_bar, MIN4);
+	N0_OP: OR_4
+		port map(MIN1, MIN2, MIN3, MIN4, N0);
+
+	--D Flip Flop 0--
+
+	FF0 : dFlipFlop
+		port map('0', N0, CLK, P0);
+	
+	--Here you will define the combinational block L3 whoich is the IPut to the FF1--
+	
+	N1_OP: AND_2
+		port map(RST_bar, IP, N1);
+
+	--D Flip Flop 1--
+	FF1 : dFlipFlop
+		port map('0', N1, CLK, P1);
+	
+	--Here you will define the combinational block L3 whoich is the IPut to the FF2--
+	
+	N2_1: AND_3
+		port map(P1, RST_bar, IP_bar, MIN5);
+	N2_2: AND_4
+		port map(P2, P1_bar, RST_bar, IP, MIN6);
+	N2_OP: OR_2
+		port map(MIN5, MIN6, N2);
+	
+	--D Flip Flop 2--
+
+	FF2 : dFlipFlop
+		port map('0', N2, CLK, P2);
+		
+	--Output--
+	
+	OP_1: AND_4
+		port map(P2, P1, RST_bar, IP_bar, MIN7);
+	OP_2: AND_4
+		port map(P2, P0, RST_bar, IP, MIN8);
+	OP_OP: OR_2
+		port map(MIN7, MIN8, OP);
+
+end struct;

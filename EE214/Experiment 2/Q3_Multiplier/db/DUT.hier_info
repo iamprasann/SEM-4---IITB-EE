@@ -1,0 +1,62 @@
+|DUT
+input_vector[0] => mul:add_instance.B[0]
+input_vector[1] => mul:add_instance.B[1]
+input_vector[2] => mul:add_instance.B[2]
+input_vector[3] => mul:add_instance.B[3]
+input_vector[4] => mul:add_instance.A[0]
+input_vector[5] => mul:add_instance.A[1]
+input_vector[6] => mul:add_instance.A[2]
+input_vector[7] => mul:add_instance.A[3]
+output_vector[0] << mul:add_instance.M[0]
+output_vector[1] << mul:add_instance.M[1]
+output_vector[2] << mul:add_instance.M[2]
+output_vector[3] << mul:add_instance.M[3]
+output_vector[4] << mul:add_instance.M[4]
+output_vector[5] << mul:add_instance.M[5]
+output_vector[6] << mul:add_instance.M[6]
+output_vector[7] << mul:add_instance.M[7]
+
+
+|DUT|mul:add_instance
+A[0] => \multiplier:pps[0][0].IN0
+A[0] => \multiplier:pps[1][1].IN0
+A[0] => \multiplier:pps[2][2].IN0
+A[0] => \multiplier:pps[3][3].IN0
+A[1] => \multiplier:pps[0][1].IN0
+A[1] => \multiplier:pps[1][2].IN0
+A[1] => \multiplier:pps[2][3].IN0
+A[1] => \multiplier:pps[3][4].IN0
+A[2] => \multiplier:pps[0][2].IN0
+A[2] => \multiplier:pps[1][3].IN0
+A[2] => \multiplier:pps[2][4].IN0
+A[2] => \multiplier:pps[3][5].IN0
+A[3] => \multiplier:pps[0][3].IN0
+A[3] => \multiplier:pps[1][4].IN0
+A[3] => \multiplier:pps[2][5].IN0
+A[3] => \multiplier:pps[3][6].IN0
+B[0] => \multiplier:pps[0][0].IN1
+B[0] => \multiplier:pps[0][1].IN1
+B[0] => \multiplier:pps[0][2].IN1
+B[0] => \multiplier:pps[0][3].IN1
+B[1] => \multiplier:pps[1][1].IN1
+B[1] => \multiplier:pps[1][2].IN1
+B[1] => \multiplier:pps[1][3].IN1
+B[1] => \multiplier:pps[1][4].IN1
+B[2] => \multiplier:pps[2][2].IN1
+B[2] => \multiplier:pps[2][3].IN1
+B[2] => \multiplier:pps[2][4].IN1
+B[2] => \multiplier:pps[2][5].IN1
+B[3] => \multiplier:pps[3][3].IN1
+B[3] => \multiplier:pps[3][4].IN1
+B[3] => \multiplier:pps[3][5].IN1
+B[3] => \multiplier:pps[3][6].IN1
+M[0] <= \multiplier:pps[0][0].DB_MAX_OUTPUT_PORT_TYPE
+M[1] <= sum.DB_MAX_OUTPUT_PORT_TYPE
+M[2] <= sum.DB_MAX_OUTPUT_PORT_TYPE
+M[3] <= sum.DB_MAX_OUTPUT_PORT_TYPE
+M[4] <= sum.DB_MAX_OUTPUT_PORT_TYPE
+M[5] <= sum.DB_MAX_OUTPUT_PORT_TYPE
+M[6] <= sum.DB_MAX_OUTPUT_PORT_TYPE
+M[7] <= carry.DB_MAX_OUTPUT_PORT_TYPE
+
+

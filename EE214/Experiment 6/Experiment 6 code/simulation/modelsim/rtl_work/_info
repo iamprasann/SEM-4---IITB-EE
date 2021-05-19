@@ -1,0 +1,134 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/iamprasann/Desktop/EE214/Lab9/simulation/modelsim
+Emusic
+Z1 w1617188931
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 0
+R0
+Z4 8/home/iamprasann/Desktop/EE214/Lab9/music.vhd
+Z5 F/home/iamprasann/Desktop/EE214/Lab9/music.vhd
+l0
+L4 1
+VdC_LFYn[AUzRUk1;03a612
+!s100 lEhLc8O5UDlIzoJGZX_<:2
+Z6 OV;C;2020.1;71
+31
+Z7 !s110 1617189683
+!i10b 1
+Z8 !s108 1617189683.000000
+Z9 !s90 -reportprogress|300|-93|-work|work|/home/iamprasann/Desktop/EE214/Lab9/music.vhd|
+Z10 !s107 /home/iamprasann/Desktop/EE214/Lab9/music.vhd|
+!i113 1
+Z11 o-93 -work work
+Z12 tExplicit 1 CvgOpt 0
+Afsm
+R2
+R3
+DEx4 work 5 music 0 22 dC_LFYn[AUzRUk1;03a612
+!i122 0
+l26
+L10 116
+VK3FKYVBifBWJIHe`<L0P80
+!s100 W9YPe9V<XgWWPl;OlTz3X3
+R6
+31
+R7
+!i10b 1
+R8
+R9
+R10
+!i113 1
+R11
+R12
+Esong_tb
+Z13 w1617182098
+R2
+R3
+!i122 2
+R0
+Z14 8/home/iamprasann/Desktop/EE214/Lab9/song_tb.vhd
+Z15 F/home/iamprasann/Desktop/EE214/Lab9/song_tb.vhd
+l0
+L5 1
+V6KzozPY^>Q?@VC6hScK?z0
+!s100 AB_RdY^fH@=Skd7obRTe^0
+R6
+31
+R7
+!i10b 1
+R8
+Z16 !s90 -reportprogress|300|-93|-work|work|/home/iamprasann/Desktop/EE214/Lab9/song_tb.vhd|
+!s107 /home/iamprasann/Desktop/EE214/Lab9/song_tb.vhd|
+!i113 1
+R11
+R12
+Atestbench
+R2
+R3
+DEx4 work 7 song_tb 0 22 6KzozPY^>Q?@VC6hScK?z0
+!i122 2
+l22
+L9 24
+V?I@1SdK_B7Id]If23B2TI3
+!s100 dF7H[jk<T^_EQ;4Y^;^Vd0
+R6
+31
+R7
+!i10b 1
+R8
+R16
+Z17 !s107 /home/iamprasann/Desktop/EE214/Lab9/song_tb.vhd|
+!i113 1
+R11
+R12
+Etonegenerator
+Z18 w1617189477
+R2
+R3
+!i122 1
+R0
+Z19 8/home/iamprasann/Desktop/EE214/Lab9/toneGenerator.vhd
+Z20 F/home/iamprasann/Desktop/EE214/Lab9/toneGenerator.vhd
+l0
+L4 1
+Vi[U]J^=TKPk3@H_CT3HAB2
+!s100 lO8CQmlDmn2WOcJdjaW_@3
+R6
+31
+R7
+!i10b 1
+R8
+Z21 !s90 -reportprogress|300|-93|-work|work|/home/iamprasann/Desktop/EE214/Lab9/toneGenerator.vhd|
+Z22 !s107 /home/iamprasann/Desktop/EE214/Lab9/toneGenerator.vhd|
+!i113 1
+R11
+R12
+Abehavioral
+R2
+R3
+DEx4 work 13 tonegenerator 0 22 i[U]J^=TKPk3@H_CT3HAB2
+!i122 1
+l12
+L11 104
+VRl;Ra2:FJ[_cWQ_<XPaP=2
+!s100 S;AY^F5ea_TAhiV]4_EAa2
+R6
+31
+R7
+!i10b 1
+R8
+R21
+R22
+!i113 1
+R11
+R12

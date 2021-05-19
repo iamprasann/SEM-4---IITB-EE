@@ -1,0 +1,29 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Setup 'clock_music'
+Slack : -11.871
+TNS   : -203.721
+
+Type  : Setup 'clk_50'
+Slack : -9.713
+TNS   : -1413.235
+
+Type  : Hold 'clk_50'
+Slack : -1.968
+TNS   : -1.968
+
+Type  : Hold 'clock_music'
+Slack : 2.116
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'clk_50'
+Slack : -2.289
+TNS   : -2.289
+
+Type  : Minimum Pulse Width 'clock_music'
+Slack : 0.234
+TNS   : 0.000
+
+------------------------------------------------------------

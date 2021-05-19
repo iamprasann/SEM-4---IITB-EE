@@ -1,0 +1,19 @@
+entity toneGenerator is
+port (toneOut : out std_logic; --this pin will give your notes output
+clk : in std_logic;
+LED : out std_logic_vector(7 downto 0);
+switch : in std_logic_vector(7 downto 0));
+end entity toneGenerator;
+--...............Start the architecture here......................
+-------------------CODE
+-------------------CODE
+if (count_sa1 = 104168) then--240Hz
+count_sa1 := 1;
+sa1 := not sa1;
+else
+count_sa1 := count_sa1 + 1;
+end if;
+toneOut <= sa1;
+LED <= (0 => '1', others => '0');
+-------------------CODE
+-------------------CODE

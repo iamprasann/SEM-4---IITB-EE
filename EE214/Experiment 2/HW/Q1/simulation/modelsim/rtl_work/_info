@@ -1,0 +1,134 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/HOME/Desktop/SEM 4/EE214/Lab6/Q1/simulation/modelsim
+Edut
+Z1 w1614723196
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 0
+R0
+Z4 8C:/Users/HOME/Desktop/SEM 4/EE214/Lab6/Q1/DUT.vhd
+Z5 FC:/Users/HOME/Desktop/SEM 4/EE214/Lab6/Q1/DUT.vhd
+l0
+L7 1
+Vgfc7[Hb:bA_KdN5<fRlbS1
+!s100 KIOSG7[n=53Yg9P<0CR<@0
+Z6 OV;C;2020.1;71
+31
+Z7 !s110 1614762966
+!i10b 1
+Z8 !s108 1614762966.000000
+Z9 !s90 -reportprogress|300|-93|-work|work|C:/Users/HOME/Desktop/SEM 4/EE214/Lab6/Q1/DUT.vhd|
+Z10 !s107 C:/Users/HOME/Desktop/SEM 4/EE214/Lab6/Q1/DUT.vhd|
+!i113 1
+Z11 o-93 -work work
+Z12 tExplicit 1 CvgOpt 0
+Adutwrap
+R2
+R3
+DEx4 work 3 dut 0 22 gfc7[Hb:bA_KdN5<fRlbS1
+!i122 0
+l17
+L13 30
+V^1]5Q>IfO;O4]78Q^:z`;0
+!s100 4beG>SNMYFE24=mg?Y>eJ0
+R6
+31
+R7
+!i10b 1
+R8
+R9
+R10
+!i113 1
+R11
+R12
+Eshiftleftbyone
+Z13 w1614722995
+R2
+R3
+!i122 1
+R0
+Z14 8C:/Users/HOME/Desktop/SEM 4/EE214/Lab6/Q1/ShiftLeftByOne.vhd
+Z15 FC:/Users/HOME/Desktop/SEM 4/EE214/Lab6/Q1/ShiftLeftByOne.vhd
+l0
+L4 1
+V;i[RIoH8AFOOUh5C>]1S:0
+!s100 ]jNDK^N@=mf]ZGa]C8X;O3
+R6
+31
+R7
+!i10b 1
+R8
+Z16 !s90 -reportprogress|300|-93|-work|work|C:/Users/HOME/Desktop/SEM 4/EE214/Lab6/Q1/ShiftLeftByOne.vhd|
+Z17 !s107 C:/Users/HOME/Desktop/SEM 4/EE214/Lab6/Q1/ShiftLeftByOne.vhd|
+!i113 1
+R11
+R12
+Aeasy
+R2
+R3
+DEx4 work 14 shiftleftbyone 0 22 ;i[RIoH8AFOOUh5C>]1S:0
+!i122 1
+l10
+L8 13
+VhFzEd;R<dUPQ0AJZ@RdHd1
+!s100 UW]V5CG7ON3FoS5J3?0zU1
+R6
+31
+R7
+!i10b 1
+R8
+R16
+R17
+!i113 1
+R11
+R12
+Etestbench
+Z18 w1614723475
+R3
+R2
+!i122 2
+R0
+Z19 8C:/Users/HOME/Desktop/SEM 4/EE214/Lab6/Q1/Testbench.vhd
+Z20 FC:/Users/HOME/Desktop/SEM 4/EE214/Lab6/Q1/Testbench.vhd
+l0
+L7 1
+V]iKK_Z9L:G9B:i8c]3eFH0
+!s100 bWf8kl8zb90X@P1m>V^K20
+R6
+31
+Z21 !s110 1614762967
+!i10b 1
+R8
+Z22 !s90 -reportprogress|300|-93|-work|work|C:/Users/HOME/Desktop/SEM 4/EE214/Lab6/Q1/Testbench.vhd|
+!s107 C:/Users/HOME/Desktop/SEM 4/EE214/Lab6/Q1/Testbench.vhd|
+!i113 1
+R11
+R12
+Abehave
+R3
+R2
+DEx4 work 9 testbench 0 22 ]iKK_Z9L:G9B:i8c]3eFH0
+!i122 2
+l69
+L9 132
+VzjYD2[[NUJP]]m7]F4C=n2
+!s100 e6?zc7gcnN;EZTQzcPk<<0
+R6
+31
+R21
+!i10b 1
+R8
+R22
+Z23 !s107 C:/Users/HOME/Desktop/SEM 4/EE214/Lab6/Q1/Testbench.vhd|
+!i113 1
+R11
+R12

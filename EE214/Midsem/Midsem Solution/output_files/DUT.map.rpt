@@ -1,0 +1,409 @@
+Analysis & Synthesis report for DUT
+Sat Mar 06 11:52:19 2021
+Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. General Register Statistics
+  9. Port Connectivity Checks: "Midsem:add_instance|FourIPMUX:mux4"
+ 10. Port Connectivity Checks: "Midsem:add_instance|FourIPMUX:mux0|AND_4:and4"
+ 11. Port Connectivity Checks: "Midsem:add_instance|FourIPMUX:mux0|AND_4:and3"
+ 12. Port Connectivity Checks: "Midsem:add_instance|FourIPMUX:mux0|AND_4:and2"
+ 13. Port Connectivity Checks: "Midsem:add_instance|FourIPMUX:mux0|AND_4:and1"
+ 14. Port Connectivity Checks: "Midsem:add_instance|Four_Bit_Adder:BCD_2"
+ 15. Port Connectivity Checks: "Midsem:add_instance|Four_Bit_Adder:BCD_1|Full_Adder:fa0"
+ 16. Port Connectivity Checks: "Midsem:add_instance|Four_Bit_Adder:BCD_1"
+ 17. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++---------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                              ;
++-----------------------------+---------------------------------------------+
+; Analysis & Synthesis Status ; Successful - Sat Mar 06 11:52:19 2021       ;
+; Quartus Prime Version       ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
+; Revision Name               ; DUT                                         ;
+; Top-level Entity Name       ; DUT                                         ;
+; Family                      ; MAX V                                       ;
+; Total logic elements        ; 16                                          ;
+; Total pins                  ; 14                                          ;
+; Total virtual pins          ; 0                                           ;
+; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
++-----------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; 5M1270ZT144C5      ;                    ;
+; Top-level entity name                                            ; DUT                ; DUT                ;
+; Family name                                                      ; MAX V              ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                       ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                ; Library ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------+---------+
+; DUT.vhd                          ; yes             ; User VHDL File  ; C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/DUT.vhd            ;         ;
+; Gates.vhd                        ; yes             ; User VHDL File  ; C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Gates.vhd          ;         ;
+; AND_4.vhd                        ; yes             ; User VHDL File  ; C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/AND_4.vhd          ;         ;
+; Midsem.vhd                       ; yes             ; User VHDL File  ; C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Midsem.vhd         ;         ;
+; Full_Adder.vhd                   ; yes             ; User VHDL File  ; C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Full_Adder.vhd     ;         ;
+; Four_Bit_Adder.vhd               ; yes             ; User VHDL File  ; C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Four_Bit_Adder.vhd ;         ;
+; FourIPMUX.vhd                    ; yes             ; User VHDL File  ; C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/FourIPMUX.vhd      ;         ;
+; OR_4.vhd                         ; yes             ; User VHDL File  ; C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/OR_4.vhd           ;         ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                   ;
++---------------------------------------------+-----------------+
+; Resource                                    ; Usage           ;
++---------------------------------------------+-----------------+
+; Total logic elements                        ; 16              ;
+;     -- Combinational with no register       ; 16              ;
+;     -- Register only                        ; 0               ;
+;     -- Combinational with a register        ; 0               ;
+;                                             ;                 ;
+; Logic element usage by number of LUT inputs ;                 ;
+;     -- 4 input functions                    ; 11              ;
+;     -- 3 input functions                    ; 1               ;
+;     -- 2 input functions                    ; 4               ;
+;     -- 1 input functions                    ; 0               ;
+;     -- 0 input functions                    ; 0               ;
+;                                             ;                 ;
+; Logic elements by mode                      ;                 ;
+;     -- normal mode                          ; 16              ;
+;     -- arithmetic mode                      ; 0               ;
+;     -- qfbk mode                            ; 0               ;
+;     -- register cascade mode                ; 0               ;
+;     -- synchronous clear/load mode          ; 0               ;
+;     -- asynchronous clear/load mode         ; 0               ;
+;                                             ;                 ;
+; Total registers                             ; 0               ;
+; I/O pins                                    ; 14              ;
+; Maximum fan-out node                        ; input_vector[2] ;
+; Maximum fan-out                             ; 10              ;
+; Total fan-out                               ; 60              ;
+; Average fan-out                             ; 2.00            ;
++---------------------------------------------+-----------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                       ;
++------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------------------------------------------------------+----------------+--------------+
+; Compilation Hierarchy Node   ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                                                   ; Entity Name    ; Library Name ;
++------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------------------------------------------------------+----------------+--------------+
+; |DUT                         ; 16 (0)      ; 0            ; 0          ; 14   ; 0            ; 16 (0)       ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |DUT                                                                  ; DUT            ; work         ;
+;    |Midsem:add_instance|     ; 16 (0)      ; 0            ; 0          ; 0    ; 0            ; 16 (0)       ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |DUT|Midsem:add_instance                                              ; Midsem         ; work         ;
+;       |AND_2:ander5|         ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |DUT|Midsem:add_instance|AND_2:ander5                                 ; AND_2          ; work         ;
+;       |FourIPMUX:mux0|       ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |DUT|Midsem:add_instance|FourIPMUX:mux0                               ; FourIPMUX      ; work         ;
+;          |OR_4:or_final|     ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |DUT|Midsem:add_instance|FourIPMUX:mux0|OR_4:or_final                 ; OR_4           ; work         ;
+;             |OR_2:or_final|  ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |DUT|Midsem:add_instance|FourIPMUX:mux0|OR_4:or_final|OR_2:or_final   ; OR_2           ; work         ;
+;       |FourIPMUX:mux1|       ; 4 (0)       ; 0            ; 0          ; 0    ; 0            ; 4 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |DUT|Midsem:add_instance|FourIPMUX:mux1                               ; FourIPMUX      ; work         ;
+;          |OR_4:or_final|     ; 4 (0)       ; 0            ; 0          ; 0    ; 0            ; 4 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |DUT|Midsem:add_instance|FourIPMUX:mux1|OR_4:or_final                 ; OR_4           ; work         ;
+;             |OR_2:or_final|  ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |DUT|Midsem:add_instance|FourIPMUX:mux1|OR_4:or_final|OR_2:or_final   ; OR_2           ; work         ;
+;       |FourIPMUX:mux2|       ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |DUT|Midsem:add_instance|FourIPMUX:mux2                               ; FourIPMUX      ; work         ;
+;          |OR_4:or_final|     ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |DUT|Midsem:add_instance|FourIPMUX:mux2|OR_4:or_final                 ; OR_4           ; work         ;
+;             |OR_2:or_final|  ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |DUT|Midsem:add_instance|FourIPMUX:mux2|OR_4:or_final|OR_2:or_final   ; OR_2           ; work         ;
+;       |FourIPMUX:mux3|       ; 3 (0)       ; 0            ; 0          ; 0    ; 0            ; 3 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |DUT|Midsem:add_instance|FourIPMUX:mux3                               ; FourIPMUX      ; work         ;
+;          |OR_4:or_final|     ; 3 (0)       ; 0            ; 0          ; 0    ; 0            ; 3 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |DUT|Midsem:add_instance|FourIPMUX:mux3|OR_4:or_final                 ; OR_4           ; work         ;
+;             |OR_2:or_final|  ; 3 (3)       ; 0            ; 0          ; 0    ; 0            ; 3 (3)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |DUT|Midsem:add_instance|FourIPMUX:mux3|OR_4:or_final|OR_2:or_final   ; OR_2           ; work         ;
+;       |FourIPMUX:mux4|       ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |DUT|Midsem:add_instance|FourIPMUX:mux4                               ; FourIPMUX      ; work         ;
+;          |OR_4:or_final|     ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |DUT|Midsem:add_instance|FourIPMUX:mux4|OR_4:or_final                 ; OR_4           ; work         ;
+;             |OR_2:or1|       ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |DUT|Midsem:add_instance|FourIPMUX:mux4|OR_4:or_final|OR_2:or1        ; OR_2           ; work         ;
+;       |Four_Bit_Adder:BCD_1| ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |DUT|Midsem:add_instance|Four_Bit_Adder:BCD_1                         ; Four_Bit_Adder ; work         ;
+;          |Full_Adder:fa3|    ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |DUT|Midsem:add_instance|Four_Bit_Adder:BCD_1|Full_Adder:fa3          ; Full_Adder     ; work         ;
+;             |AND_2:a1|       ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |DUT|Midsem:add_instance|Four_Bit_Adder:BCD_1|Full_Adder:fa3|AND_2:a1 ; AND_2          ; work         ;
+;       |XNOR_2:xorer0|        ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |DUT|Midsem:add_instance|XNOR_2:xorer0                                ; XNOR_2         ; work         ;
++------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------------------------------------------------------+----------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------------------+
+; Port Connectivity Checks: "Midsem:add_instance|FourIPMUX:mux4" ;
++------+-------+----------+--------------------------------------+
+; Port ; Type  ; Severity ; Details                              ;
++------+-------+----------+--------------------------------------+
+; x3   ; Input ; Info     ; Stuck at GND                         ;
+; x4   ; Input ; Info     ; Stuck at GND                         ;
++------+-------+----------+--------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Port Connectivity Checks: "Midsem:add_instance|FourIPMUX:mux0|AND_4:and4" ;
++------+-------+----------+-------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                         ;
++------+-------+----------+-------------------------------------------------+
+; d    ; Input ; Info     ; Stuck at VCC                                    ;
++------+-------+----------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Port Connectivity Checks: "Midsem:add_instance|FourIPMUX:mux0|AND_4:and3" ;
++------+-------+----------+-------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                         ;
++------+-------+----------+-------------------------------------------------+
+; d    ; Input ; Info     ; Stuck at VCC                                    ;
++------+-------+----------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Port Connectivity Checks: "Midsem:add_instance|FourIPMUX:mux0|AND_4:and2" ;
++------+-------+----------+-------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                         ;
++------+-------+----------+-------------------------------------------------+
+; d    ; Input ; Info     ; Stuck at VCC                                    ;
++------+-------+----------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Port Connectivity Checks: "Midsem:add_instance|FourIPMUX:mux0|AND_4:and1" ;
++------+-------+----------+-------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                         ;
++------+-------+----------+-------------------------------------------------+
+; d    ; Input ; Info     ; Stuck at VCC                                    ;
++------+-------+----------+-------------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "Midsem:add_instance|Four_Bit_Adder:BCD_2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; b0   ; Input ; Info     ; Stuck at GND                               ;
+; b3   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++-------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Midsem:add_instance|Four_Bit_Adder:BCD_1|Full_Adder:fa0" ;
++------+-------+----------+-----------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                   ;
++------+-------+----------+-----------------------------------------------------------+
+; cin  ; Input ; Info     ; Stuck at GND                                              ;
++------+-------+----------+-----------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Midsem:add_instance|Four_Bit_Adder:BCD_1"                                           ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; b0   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; b1   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; b2   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; b3   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; r0   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; r1   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; r2   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; r3   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+    Info: Processing started: Sat Mar 06 11:52:04 2021
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off MidsemSubmission -c DUT
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file dut.vhd
+    Info (12022): Found design unit 1: DUT-DutWrap File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/DUT.vhd Line: 13
+    Info (12023): Found entity 1: DUT File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/DUT.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file testbench.vhd
+    Info (12022): Found design unit 1: Testbench-Behave File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Testbench.vhd Line: 9
+    Info (12023): Found entity 1: Testbench File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Testbench.vhd Line: 7
+Info (12021): Found 17 design units, including 8 entities, in source file gates.vhd
+    Info (12022): Found design unit 1: Gates File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Gates.vhd Line: 3
+    Info (12022): Found design unit 2: INVERTER-Equations File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Gates.vhd Line: 45
+    Info (12022): Found design unit 3: AND_2-Equations File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Gates.vhd Line: 57
+    Info (12022): Found design unit 4: NAND_2-Equations File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Gates.vhd Line: 68
+    Info (12022): Found design unit 5: OR_2-Equations File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Gates.vhd Line: 79
+    Info (12022): Found design unit 6: NOR_2-Equations File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Gates.vhd Line: 90
+    Info (12022): Found design unit 7: XOR_2-Equations File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Gates.vhd Line: 102
+    Info (12022): Found design unit 8: XNOR_2-Equations File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Gates.vhd Line: 113
+    Info (12022): Found design unit 9: HALF_ADDER-Equations File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Gates.vhd Line: 124
+    Info (12023): Found entity 1: INVERTER File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Gates.vhd Line: 41
+    Info (12023): Found entity 2: AND_2 File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Gates.vhd Line: 53
+    Info (12023): Found entity 3: NAND_2 File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Gates.vhd Line: 64
+    Info (12023): Found entity 4: OR_2 File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Gates.vhd Line: 75
+    Info (12023): Found entity 5: NOR_2 File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Gates.vhd Line: 86
+    Info (12023): Found entity 6: XOR_2 File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Gates.vhd Line: 98
+    Info (12023): Found entity 7: XNOR_2 File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Gates.vhd Line: 109
+    Info (12023): Found entity 8: HALF_ADDER File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Gates.vhd Line: 120
+Info (12021): Found 2 design units, including 1 entities, in source file and_4.vhd
+    Info (12022): Found design unit 1: AND_4-Struct File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/AND_4.vhd Line: 15
+    Info (12023): Found entity 1: AND_4 File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/AND_4.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file midsem.vhd
+    Info (12022): Found design unit 1: Midsem-Struct File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Midsem.vhd Line: 11
+    Info (12023): Found entity 1: Midsem File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Midsem.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file full_adder.vhd
+    Info (12022): Found design unit 1: Full_Adder-Struct File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Full_Adder.vhd Line: 12
+    Info (12023): Found entity 1: Full_Adder File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Full_Adder.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file four_bit_adder.vhd
+    Info (12022): Found design unit 1: Four_Bit_Adder-Struct File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Four_Bit_Adder.vhd Line: 16
+    Info (12023): Found entity 1: Four_Bit_Adder File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Four_Bit_Adder.vhd Line: 11
+Info (12021): Found 2 design units, including 1 entities, in source file fouripmux.vhd
+    Info (12022): Found design unit 1: FourIPMUX-Struct File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/FourIPMUX.vhd Line: 16
+    Info (12023): Found entity 1: FourIPMUX File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/FourIPMUX.vhd Line: 11
+Info (12021): Found 2 design units, including 1 entities, in source file or_4.vhd
+    Info (12022): Found design unit 1: OR_4-Struct File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/OR_4.vhd Line: 16
+    Info (12023): Found entity 1: OR_4 File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/OR_4.vhd Line: 11
+Info (12127): Elaborating entity "DUT" for the top level hierarchy
+Info (12128): Elaborating entity "Midsem" for hierarchy "Midsem:add_instance" File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/DUT.vhd Line: 21
+Warning (10036): Verilog HDL or VHDL warning at Midsem.vhd(29): object "t0" assigned a value but never read File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Midsem.vhd Line: 29
+Warning (10036): Verilog HDL or VHDL warning at Midsem.vhd(29): object "t1" assigned a value but never read File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Midsem.vhd Line: 29
+Warning (10036): Verilog HDL or VHDL warning at Midsem.vhd(29): object "t2" assigned a value but never read File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Midsem.vhd Line: 29
+Warning (10036): Verilog HDL or VHDL warning at Midsem.vhd(29): object "t3" assigned a value but never read File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Midsem.vhd Line: 29
+Info (12128): Elaborating entity "Four_Bit_Adder" for hierarchy "Midsem:add_instance|Four_Bit_Adder:BCD_1" File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Midsem.vhd Line: 33
+Info (12128): Elaborating entity "Full_Adder" for hierarchy "Midsem:add_instance|Four_Bit_Adder:BCD_1|Full_Adder:fa0" File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Four_Bit_Adder.vhd Line: 29
+Info (12128): Elaborating entity "HALF_ADDER" for hierarchy "Midsem:add_instance|Four_Bit_Adder:BCD_1|Full_Adder:fa0|HALF_ADDER:ha" File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Full_Adder.vhd Line: 16
+Info (12128): Elaborating entity "AND_2" for hierarchy "Midsem:add_instance|Four_Bit_Adder:BCD_1|Full_Adder:fa0|AND_2:a1" File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Full_Adder.vhd Line: 20
+Info (12128): Elaborating entity "OR_2" for hierarchy "Midsem:add_instance|Four_Bit_Adder:BCD_1|Full_Adder:fa0|OR_2:o1" File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Full_Adder.vhd Line: 21
+Info (12128): Elaborating entity "XOR_2" for hierarchy "Midsem:add_instance|Four_Bit_Adder:BCD_1|Full_Adder:fa0|XOR_2:x1" File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Full_Adder.vhd Line: 24
+Info (12128): Elaborating entity "XNOR_2" for hierarchy "Midsem:add_instance|XNOR_2:xorer0" File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Midsem.vhd Line: 51
+Info (12128): Elaborating entity "AND_4" for hierarchy "Midsem:add_instance|AND_4:part4_flag" File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Midsem.vhd Line: 60
+Info (12128): Elaborating entity "FourIPMUX" for hierarchy "Midsem:add_instance|FourIPMUX:mux0" File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/Midsem.vhd Line: 72
+Info (12128): Elaborating entity "INVERTER" for hierarchy "Midsem:add_instance|FourIPMUX:mux0|INVERTER:inv1" File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/FourIPMUX.vhd Line: 35
+Info (12128): Elaborating entity "OR_4" for hierarchy "Midsem:add_instance|FourIPMUX:mux0|OR_4:or_final" File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/FourIPMUX.vhd Line: 52
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "output_vector[5]" is stuck at GND File: C:/Users/HOME/Desktop/SEM 4/EE214/Midsem/DUT.vhd Line: 9
+Info (21057): Implemented 30 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 8 input pins
+    Info (21059): Implemented 6 output pins
+    Info (21061): Implemented 16 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 7 warnings
+    Info: Peak virtual memory: 4768 megabytes
+    Info: Processing ended: Sat Mar 06 11:52:19 2021
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:38
+
+
