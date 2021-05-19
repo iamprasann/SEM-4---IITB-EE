@@ -1,0 +1,42 @@
+A51 MACRO ASSEMBLER  Q1                                                                   01/25/2021 14:33:01 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\q1.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE q1.asm SET(SMALL) DEBUG PRINT(.\Listings\q1.lst) OBJECT(.\Objects\q1.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h
+0000 020100            2     ljmp start
+0100                   3     org 100h
+0100 7570FF            4     start: mov 70h, #0ffh
+0103 E570              5     mov a, 70h
+0105 7908              6     mov r1, #08h
+0107 7800              7     mov r0, #00h
+0109 13                8     nextbit: rrc a
+010A 5001              9     jnc nobit
+010C 08               10     inc r0
+010D D9FA             11     nobit: djnz r1, nextbit
+010F 8871             12     mov 71h, r0
+0111 80FE             13     here: sjmp here
+                      14     end
+A51 MACRO ASSEMBLER  Q1                                                                   01/25/2021 14:33:01 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+HERE . . . . . . .  C ADDR   0111H   A   
+NEXTBIT. . . . . .  C ADDR   0109H   A   
+NOBIT. . . . . . .  C ADDR   010DH   A   
+START. . . . . . .  C ADDR   0100H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,165 @@
+A51 MACRO ASSEMBLER  SCOM                                                                 03/15/2021 02:31:49 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\SCoM.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE SCoM.asm SET(SMALL) DEBUG PRINT(.\Listings\SCoM.lst) OBJECT(.\Objects\S
+                      CoM.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 020100            2             LJMP START
+000B                   3     ORG 000BH
+000B 020050            4             LJMP HANDLER
+                       5     
+0050                   6     ORG 0050H
+0050                   7     HANDLER: 
+0050 898C              8             MOV TH0, R1             ;R0, R1 PLACEHOLDERS FOR DIFFERENT FREQUENCIES
+0052 888A              9             MOV TL0, R0
+0054 B294             10             CPL P1.4
+0056 32               11             RETI
+                      12             
+0100                  13     ORG 0100H
+0100                  14     START: 
+0100 D2AF             15             SETB EA
+0102 D2A9             16             SETB ET0
+0104 758911           17             MOV TMOD, #00010001B
+                      18             
+0107                  19     LOOP:
+0107 79F2             20             MOV R1, #0F2H
+0109 78B3             21             MOV R0, #0B3H
+                      22             
+010B 898C             23             MOV TH0, R1
+010D 888A             24             MOV TL0, R0
+010F D28C             25             SETB TR0
+                      26             
+0111 317A             27             ACALL DELAYHALFS
+                      28             
+0113 C28C             29             CLR TR0
+                      30             
+0115 79F9             31             MOV R1, #0F9H
+0117 7859             32             MOV R0, #059H
+                      33             
+0119 898C             34             MOV TH0, R1
+011B 888A             35             MOV TL0, R0
+011D D28C             36             SETB TR0
+                      37             
+011F 317A             38             ACALL DELAYHALFS
+                      39             
+0121 C28C             40             CLR TR0
+                      41             
+0123 79F7             42             MOV R1, #0F7H
+0125 781F             43             MOV R0, #01FH
+                      44             
+0127 898C             45             MOV TH0, R1
+0129 888A             46             MOV TL0, R0
+012B D28C             47             SETB TR0
+                      48             
+012D 317A             49             ACALL DELAYHALFS
+                      50             
+012F C28C             51             CLR TR0
+                      52             
+0131 79F6             53             MOV R1, #0F6H
+0133 7809             54             MOV R0, #009H
+                      55             
+0135 898C             56             MOV TH0, R1
+0137 888A             57             MOV TL0, R0
+A51 MACRO ASSEMBLER  SCOM                                                                 03/15/2021 02:31:49 PAGE     2
+
+0139 D28C             58             SETB TR0
+                      59             
+013B 317A             60             ACALL DELAYHALFS
+                      61             
+013D C28C             62             CLR TR0
+                      63             
+013F 79FB             64             MOV R1, #0FBH
+0141 7804             65             MOV R0, #004H
+                      66             
+0143 898C             67             MOV TH0, R1
+0145 888A             68             MOV TL0, R0
+0147 D28C             69             SETB TR0
+                      70             
+0149 317A             71             ACALL DELAYHALFS
+                      72             
+014B C28C             73             CLR TR0
+                      74             
+014D 79F7             75             MOV R1, #0F7H
+014F 781F             76             MOV R0, #01FH
+                      77             
+0151 898C             78             MOV TH0, R1
+0153 888A             79             MOV TL0, R0
+0155 D28C             80             SETB TR0
+                      81             
+0157 317A             82             ACALL DELAYHALFS
+                      83             
+0159 C28C             84             CLR TR0
+                      85             
+015B 79FA             86             MOV R1, #0FAH
+015D 7868             87             MOV R0, #068H
+                      88             
+015F 898C             89             MOV TH0, R1
+0161 888A             90             MOV TL0, R0
+0163 D28C             91             SETB TR0
+                      92             
+0165 317A             93             ACALL DELAYHALFS
+                      94             
+0167 C28C             95             CLR TR0
+                      96             
+0169 79F7             97             MOV R1, #0F7H
+016B 781F             98             MOV R0, #01FH
+                      99             
+016D 898C            100             MOV TH0, R1
+016F 888A            101             MOV TL0, R0
+0171 D28C            102             SETB TR0
+                     103             
+0173 317A            104             ACALL DELAYHALFS
+                     105             
+0175 C28C            106             CLR TR0
+                     107             
+0177 020107          108             LJMP LOOP
+                     109             
+017A                 110     DELAYHALFS:
+017A 7A0F            111             mov r2, #15
+017C                 112             delay50000musec: 
+017C 758D3C          113                     mov th1, #03ch 
+017F 758BB8          114                     mov tl1, #0b8h 
+0182 D28E            115                     setb tr1 
+0184 308FFD          116                     del: jnb tf1, del
+0187 C28E            117                     clr tr1 
+0189 C28F            118                     clr tf1 
+018B DAEF            119                     djnz r2, delay50000musec
+018D 22              120     ret     
+                     121     
+                     122     END
+A51 MACRO ASSEMBLER  SCOM                                                                 03/15/2021 02:31:49 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DEL. . . . . . . .  C ADDR   0184H   A   
+DELAY50000MUSEC. .  C ADDR   017CH   A   
+DELAYHALFS . . . .  C ADDR   017AH   A   
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+ET0. . . . . . . .  B ADDR   00A8H.1 A   
+HANDLER. . . . . .  C ADDR   0050H   A   
+LOOP . . . . . . .  C ADDR   0107H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+START. . . . . . .  C ADDR   0100H   A   
+TF1. . . . . . . .  B ADDR   0088H.7 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

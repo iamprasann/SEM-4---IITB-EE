@@ -1,0 +1,70 @@
+A51 MACRO ASSEMBLER  Q1                                                                   03/08/2021 15:28:02 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Q1.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Q1.asm SET(SMALL) DEBUG PRINT(.\Listings\Q1.lst) OBJECT(.\Objects\Q1.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 000H
+0000 020100            2             LJMP START
+000B                   3     ORG 00BH
+000B 020050            4             LJMP HANDLER
+                       5     
+0050                   6     ORG 50H
+0050                   7     HANDLER:
+0050 758C3C            8             MOV TH0, #03CH
+0053 758AB6            9             MOV TL0, #0B6H
+0056 D805             10             DJNZ R0, NOTONESEC
+0058 F590             11             MOV P1, A
+005A F4               12             CPL A
+005B 7828             13             MOV R0, #40
+005D                  14             NOTONESEC:
+005D 32               15             RETI
+                      16                     
+0100                  17     ORG 100H
+0100                  18             START:  
+                      19             
+0100 D2AF             20             SETB EA
+0102 D2A9             21             SETB ET0
+                      22             
+0104 758901           23             MOV TMOD, #00000001B
+0107 7590FF           24             MOV P1, #0FFH
+010A E4               25             CLR A
+                      26             
+010B 758C3C           27             MOV TH0, #03CH
+010E 758AC6           28             MOV TL0, #0C6H
+0111 D28C             29             SETB TR0
+                      30             
+0113 7828             31             MOV R0, #40
+                      32             
+0115 80FE             33             HERE: SJMP HERE
+                      34             
+                      35     END
+A51 MACRO ASSEMBLER  Q1                                                                   03/08/2021 15:28:02 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+ET0. . . . . . . .  B ADDR   00A8H.1 A   
+HANDLER. . . . . .  C ADDR   0050H   A   
+HERE . . . . . . .  C ADDR   0115H   A   
+NOTONESEC. . . . .  C ADDR   005DH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+START. . . . . . .  C ADDR   0100H   A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

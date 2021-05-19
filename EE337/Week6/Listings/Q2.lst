@@ -1,0 +1,101 @@
+A51 MACRO ASSEMBLER  Q2                                                                   03/15/2021 15:14:46 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Q2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Q2.asm SET(SMALL) DEBUG PRINT(.\Listings\Q2.lst) OBJECT(.\Objects\Q2.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 020100            2             LJMP START
+000B                   3     ORG 000BH
+000B 020050            4             LJMP HANDLER
+                       5     
+0050                   6     ORG 0050H
+0050                   7     HANDLER: 
+0050 898C              8             MOV TH0, R1             ;R0, R1 PLACEHOLDERS FOR DIFFERENT FREQUENCIES
+0052 888A              9             MOV TL0, R0
+0054 B294             10             CPL P1.4
+0056 32               11             RETI
+                      12             
+0100                  13     ORG 0100H
+0100                  14     START: 
+0100 D2AF             15             SETB EA
+0102 D2A9             16             SETB ET0
+0104 758911           17             MOV TMOD, #00010001B
+                      18             
+0107                  19     LOOP:
+0107 79F1             20             MOV R1, #0F1H
+0109 7888             21             MOV R0, #88H
+                      22             
+010B 898C             23             MOV TH0, R1
+010D 888A             24             MOV TL0, R0
+010F D28C             25             SETB TR0
+                      26             
+0111 312A             27             ACALL DELAY1S
+0113 312A             28             ACALL DELAY1S
+                      29             
+0115 C28C             30             CLR TR0
+                      31             
+0117 79F2             32             MOV R1, #0F2H
+0119 78FB             33             MOV R0, #0FBH
+                      34             
+011B 898C             35             MOV TH0, R1
+011D 888A             36             MOV TL0, R0
+011F D28C             37             SETB TR0
+                      38             
+0121 312A             39             ACALL DELAY1S
+0123 312A             40             ACALL DELAY1S
+                      41             
+0125 C28C             42             CLR TR0
+                      43             
+0127 020107           44             LJMP LOOP
+                      45             
+012A                  46     DELAY1S:
+012A 7A28             47             mov r2, #40
+012C                  48             delay50000musec: 
+012C 758D3C           49                     mov th1, #03ch 
+012F 758BB8           50                     mov tl1, #0b8h 
+0132 D28E             51                     setb tr1 
+0134 308FFD           52                     del: jnb tf1, del
+0137 C28E             53                     clr tr1 
+0139 C28F             54                     clr tf1 
+013B DAEF             55                     djnz r2, delay50000musec
+013D 22               56     ret
+                      57     
+A51 MACRO ASSEMBLER  Q2                                                                   03/15/2021 15:14:46 PAGE     2
+
+                      58     END
+A51 MACRO ASSEMBLER  Q2                                                                   03/15/2021 15:14:46 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DEL. . . . . . . .  C ADDR   0134H   A   
+DELAY1S. . . . . .  C ADDR   012AH   A   
+DELAY50000MUSEC. .  C ADDR   012CH   A   
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+ET0. . . . . . . .  B ADDR   00A8H.1 A   
+HANDLER. . . . . .  C ADDR   0050H   A   
+LOOP . . . . . . .  C ADDR   0107H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+START. . . . . . .  C ADDR   0100H   A   
+TF1. . . . . . . .  B ADDR   0088H.7 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

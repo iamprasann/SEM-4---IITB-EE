@@ -1,0 +1,80 @@
+A51 MACRO ASSEMBLER  Q2                                                                   02/15/2021 14:45:09 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Q2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Q2.asm SET(SMALL) DEBUG PRINT(.\Listings\Q2.lst) OBJECT(.\Objects\Q2.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h
+0000 020100            2             ljmp start
+0100                   3     org 0100h
+                       4             
+0100                   5             start: 
+0100 7590FF            6                     mov p1, #11111111b
+0103 3128              7                     acall delay1s
+0105 3128              8                     acall delay1s
+0107 3128              9                     acall delay1s
+0109 3128             10                     acall delay1s
+010B 3128             11                     acall delay1s
+                      12                     
+010D E4               13                     clr a
+010E 859070           14                     mov 70h, p1
+0111 7970             15                     mov r1, #70h
+0113 D7               16                     xchd a, @r1
+0114 FF               17                     mov r7, a
+0115 60E9             18                     jz start
+                      19                     
+0117                  20                     blink: 
+0117 759000           21                             mov p1, #00000000b
+011A 3128             22                             acall delay1s
+011C 7590F0           23                             mov p1, #11110000b
+011F 3128             24                             acall delay1s
+0121 DFF4             25                             djnz r7, blink
+                      26                     
+0123 020100           27                     ljmp start
+                      28                     
+0126 80FE             29                     here: sjmp here 
+                      30     
+0128                  31                     delay1s:
+0128 7928             32                             mov r1, #40
+012A                  33                             delay50000musec:
+012A 758901           34                                     mov tmod, #00000001b 
+012D 758C3C           35                                     mov th0, #03ch 
+0130 758AB8           36                                     mov tl0, #0b8h 
+0133 D28C             37                                     setb tr0 
+0135 308DFD           38                                     del: jnb tf0, del
+0138 C28C             39                                     clr tr0 
+013A C28D             40                                     clr tf0 
+013C D9EC             41                                     djnz r1, delay50000musec
+013E 22               42                     ret
+                      43                     
+                      44                     end
+A51 MACRO ASSEMBLER  Q2                                                                   02/15/2021 14:45:09 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BLINK. . . . . . .  C ADDR   0117H   A   
+DEL. . . . . . . .  C ADDR   0135H   A   
+DELAY1S. . . . . .  C ADDR   0128H   A   
+DELAY50000MUSEC. .  C ADDR   012AH   A   
+HERE . . . . . . .  C ADDR   0126H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+START. . . . . . .  C ADDR   0100H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

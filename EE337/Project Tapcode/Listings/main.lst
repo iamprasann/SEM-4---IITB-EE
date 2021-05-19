@@ -1,0 +1,98 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              04/17/2021 01:46:57 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <at89c5131.h>
+   2          #include "lcd.h"  //To include LCD functions
+   3          #include "serial.c"   //To include Serial UART communication
+   4          
+   5          sbit OP_signal = P1^4;  //P1.4 is our audio signal to speaker
+   6          sbit serial_en = SCON^4;
+   7          
+   8          void play_tone(unsigned char count){
+   9   1          unsigned char i;    // i is the outer loop counter
+  10   1          unsigned int j;     // j is inner loop counter
+  11   1          for(i=0; i<=count; i++){
+  12   2              for(j=0; j<1000; j++){
+  13   3                  OP_signal = ~OP_signal;     // Square wave of frequency 500Hz
+  14   3                  msdelay(1);
+  15   3              }
+  16   2              msdelay(1000);      // One second silence
+  17   2          }
+  18   1      }
+  19          
+  20          void main(void){
+  21   1        
+  22   1          OP_signal = 0;    //Global variable initialisation
+  23   1          lcd_init();       //Clear and configure lcd
+  24   1          uart_init();      //Configure UART to 4800 baud
+  25   1          
+  26   1          while(1){
+  27   2              unsigned char letter;     //Letter stores keyboard input character
+  28   2              unsigned char row;        //Row and column of the 5X5 Alphabet to Grid map
+  29   2              unsigned char col;      
+  30   2              
+  31   2              lcd_init();
+  32   2              lcd_cmd(0x82);            //82 because I want to centre text
+  33   2              lcd_write_string("Input please");
+  34   2              
+  35   2              serial_en = 1;                //Enable serial communication
+  36   2              letter = receive_char();      //Receive character from Serial Port
+  37   2              serial_en = 0;                //Disable serial communication till next tapcode
+  38   2            
+  39   2              lcd_init();
+  40   2            
+  41   2              if((letter < 'A') || (letter > 'Z')){     //If not in uppercase range, INVALID
+  42   3                  lcd_cmd(0x81);
+  43   3                  lcd_write_string("Invalid input");
+  44   3                  msdelay(2000);                        //Invalid displayed for 2 seconds
+  45   3                  continue;
+  46   3              }
+  47   2              else if(letter < 'K'){        //Alphabets less than K correspond to 
+  48   3                  row = (letter-65)/5;      // ((pos-65)/5+1, (pos-65)%5+1) position
+  49   3                  col = (letter-65)%5;
+  50   3                  
+  51   3                  play_tone(row);
+  52   3                  msdelay(1000);
+  53   3                  play_tone(col);
+  54   3                  msdelay(1000);
+C51 COMPILER V9.60.0.0   MAIN                                                              04/17/2021 01:46:57 PAGE 2   
+
+  55   3              }
+  56   2              else if(letter == 75){
+  57   3                  play_tone(0);           //K corresponds to (1, 3) position
+  58   3                  msdelay(1000);
+  59   3                  play_tone(2);
+  60   3                  msdelay(1000);
+  61   3              }
+  62   2              else{
+  63   3                  row = (letter-66)/5;    //After K, alphabets correspond to
+  64   3                  col = (letter-66)%5;    // ((pos-66)/5+1, (pos-66)%5+1) position
+  65   3                  
+  66   3                  play_tone(row);
+  67   3                  msdelay(1000);
+  68   3                  play_tone(col);
+  69   3                  msdelay(1000);
+  70   3              }
+  71   2          }
+  72   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    657    ----
+   CONSTANT SIZE    =     27    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      15
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      2    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

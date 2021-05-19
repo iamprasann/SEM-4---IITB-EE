@@ -1,0 +1,90 @@
+A51 MACRO ASSEMBLER  Q2                                                                   01/25/2021 14:54:37 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\q2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE q2.asm SET(SMALL) DEBUG PRINT(.\Listings\q2.lst) OBJECT(.\Objects\q2.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h
+0000 020100            2     ljmp start
+0100                   3     org 100h
+0100 754001            4     start: mov 40h, #01h
+0103 754102            5     mov 41h, #02h
+0106 754203            6     mov 42h, #03h
+0109 754303            7     mov 43h, #03h 
+010C 754403            8     mov 44h, #03h
+010F 754590            9     mov 45h, #90h
+0112 7546FE           10     mov 46h, #0feh 
+0115 754704           11     mov 47h, #04h
+0118 754803           12     mov 48h, #03h
+011B 754903           13     mov 49h, #03h 
+011E 754A03           14     mov 4ah, #03h
+0121 754B07           15     mov 4bh, #07h
+0124 754C03           16     mov 4ch, #03h
+0127 754DFF           17     mov 4dh, #0ffh
+012A 754E03           18     mov 4eh, #03h
+012D 754F05           19     mov 4fh, #05h 
+0130 755003           20     mov 50h, #03h
+0133 755103           21     mov 51h, #03h
+0136 755203           22     mov 52h, #03h
+0139 755390           23     mov 53h, #90h
+                      24     
+013C 7840             25     mov r0, #40h
+013E AA40             26     mov r2, 40h
+0140 AB41             27     mov r3, 41h
+                      28     
+0142 E6               29     mov a, @r0
+0143 08               30     inc r0
+0144 96               31     subb a, @r0
+0145 5004             32     jnc skipbasecase
+0147 EA               33     mov a, r2
+0148 FB               34     mov r3, a
+0149 E6               35     mov a, @r0
+014A FA               36     mov r2, a
+                      37     
+014B 7F12             38     skipbasecase: mov r7, #12h
+014D 08               39     loop: inc r0
+014E EB               40     mov a, r3
+014F 96               41     subb a, @r0
+0150 500D             42     jnc fullskip
+0152 EA               43     mov a, r2
+0153 96               44     subb a, @r0
+0154 5007             45     jnc halfskip
+0156 EA               46     mov a, r2
+0157 FB               47     mov r3, a
+0158 E6               48     mov a, @r0
+0159 FA               49     mov r2, a
+015A 02015F           50     ljmp fullskip
+015D E6               51     halfskip: mov a, @r0
+015E FB               52     mov r3, a
+015F DFEC             53     fullskip: djnz r7, loop
+                      54     
+0161 8A70             55     mov 70h, r2
+0163 8B71             56     mov 71h, r3
+0165 80FE             57     here: sjmp here
+A51 MACRO ASSEMBLER  Q2                                                                   01/25/2021 14:54:37 PAGE     2
+
+                      58     end
+A51 MACRO ASSEMBLER  Q2                                                                   01/25/2021 14:54:37 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+FULLSKIP . . . . .  C ADDR   015FH   A   
+HALFSKIP . . . . .  C ADDR   015DH   A   
+HERE . . . . . . .  C ADDR   0165H   A   
+LOOP . . . . . . .  C ADDR   014DH   A   
+SKIPBASECASE . . .  C ADDR   014BH   A   
+START. . . . . . .  C ADDR   0100H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

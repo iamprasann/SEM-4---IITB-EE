@@ -1,0 +1,3 @@
+".\Objects\Q2.obj" 
+TO ".\Objects\BoardTest" 
+PRINT(".\Listings\BoardTest.m51") RAMSIZE(256) 

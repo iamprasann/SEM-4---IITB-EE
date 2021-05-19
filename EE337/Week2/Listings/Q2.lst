@@ -1,0 +1,88 @@
+A51 MACRO ASSEMBLER  Q2                                                                   02/01/2021 14:42:46 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Q2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Q2.asm SET(SMALL) DEBUG PRINT(.\Listings\Q2.lst) OBJECT(.\Objects\Q2.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h
+0000 020100            2     ljmp start
+0100                   3     org 100h
+                       4             
+0100 756003            5     start: mov 60h, #03h
+0103 756101            6     mov 61h, #01h
+0106 756204            7     mov 62h, #04h
+0109 756303            8     mov 63h, #03h
+010C 756404            9     mov 64h, #04h
+010F 756501           10     mov 65h, #01h
+0112 756602           11     mov 66h, #02h
+0115 756703           12     mov 67h, #03h
+0118 756802           13     mov 68h, #02h
+011B 756901           14     mov 69h, #01h
+                      15     
+011E AA60             16     mov r2, 60h
+0120 AB60             17     outerloop: mov r3, 60h
+0122 8AF0             18             innerloop: mov b, r2
+0124 E5F0             19             mov a, b
+0126 9401             20             subb a, #01h
+0128 F5F0             21             mov b, a
+012A E560             22             mov a, 60h
+012C A4               23             mul ab
+012D 2B               24             add a, r3
+012E 9401             25             subb a, #01h
+0130 2461             26             add a, #61h
+0132 F8               27             mov r0, a
+                      28             ; Sets R0 to point at R[m(i-1)+(j-1)]
+                      29             
+0133 8BF0             30             mov b, r3
+0135 E5F0             31             mov a, b
+0137 9401             32             subb a, #01h
+0139 F5F0             33             mov b, a
+013B E560             34             mov a, 60h
+013D A4               35             mul ab
+013E 2A               36             add a, r2
+013F 9401             37             subb a, #01h
+0141 2461             38             add a, #61h
+0143 F9               39             mov r1, a
+                      40             ; Sets R1 to point at R[m(j-1)+(i-1)]
+                      41             
+0144 8690             42             mov 90h, @r0
+0146 E7               43             mov a, @r1
+0147 B59009           44             cjne a, 90h, assymetric
+                      45             ; Compares the values of Mij and Mji if unequal, it exits
+                      46             
+014A DBD6             47             djnz r3, innerloop
+014C DAD2             48     djnz r2, outerloop
+                      49     
+014E D2D5             50     setb psw.5
+0150 020158           51     ljmp here
+                      52     
+0153 C2D5             53     assymetric: clr psw.5
+0155 020158           54     ljmp here
+                      55     
+0158 80FE             56     here: sjmp here
+                      57     end
+A51 MACRO ASSEMBLER  Q2                                                                   02/01/2021 14:42:46 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ASSYMETRIC . . . .  C ADDR   0153H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+HERE . . . . . . .  C ADDR   0158H   A   
+INNERLOOP. . . . .  C ADDR   0122H   A   
+OUTERLOOP. . . . .  C ADDR   0120H   A   
+PSW. . . . . . . .  D ADDR   00D0H   A   
+START. . . . . . .  C ADDR   0100H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

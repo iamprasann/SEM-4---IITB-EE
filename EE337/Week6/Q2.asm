@@ -1,0 +1,58 @@
+ORG 0000H
+	LJMP START
+ORG 000BH
+	LJMP HANDLER
+
+ORG 0050H
+HANDLER: 
+	MOV TH0, R1		;R0, R1 PLACEHOLDERS FOR DIFFERENT FREQUENCIES
+	MOV TL0, R0
+	CPL P1.4
+	RETI
+	
+ORG 0100H
+START: 
+	SETB EA
+	SETB ET0
+	MOV TMOD, #00010001B
+	
+LOOP:
+	MOV R1, #0F1H
+	MOV R0, #88H
+	
+	MOV TH0, R1
+	MOV TL0, R0
+	SETB TR0
+	
+	ACALL DELAY1S
+	ACALL DELAY1S
+	
+	CLR TR0
+	
+	MOV R1, #0F2H
+	MOV R0, #0FBH
+	
+	MOV TH0, R1
+	MOV TL0, R0
+	SETB TR0
+	
+	ACALL DELAY1S
+	ACALL DELAY1S
+	
+	CLR TR0
+	
+	LJMP LOOP
+	
+DELAY1S:
+	mov r2, #40
+	delay50000musec: 
+		mov th1, #03ch 
+		mov tl1, #0b8h 
+		setb tr1 
+		del: jnb tf1, del
+		clr tr1 
+		clr tf1 
+		djnz r2, delay50000musec
+ret
+
+END

@@ -1,0 +1,3 @@
+".\Objects\q1.obj" 
+TO ".\Objects\Week1" 
+PRINT(".\Listings\Week1.m51") RAMSIZE(256) 

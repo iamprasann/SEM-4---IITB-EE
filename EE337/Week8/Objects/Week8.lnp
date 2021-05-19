@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj" 
+TO ".\Objects\Week8" 
+PRINT(".\Listings\Week8.m51") RAMSIZE(256) 

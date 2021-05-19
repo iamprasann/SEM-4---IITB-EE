@@ -1,0 +1,52 @@
+A51 MACRO ASSEMBLER  TRIAL                                                                02/07/2021 22:21:18 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Trial.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Trial.asm SET(SMALL) DEBUG PRINT(.\Listings\Trial.lst) OBJECT(.\Objects
+                      \Trial.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h
+0000 020100            2     ljmp start
+0100                   3     org 100h
+0100                   4     start:
+0100 7808              5     mov r0,#8
+0102 742D              6     mov a,#2DH
+0104 75F09A            7     mov b,#9AH
+0107 A4                8     mul AB
+0108                   9     rep:
+0108 33               10     rlc a
+0109 5001             11     jnc next
+010B C3               12     clr c
+010C                  13     next:
+010C D8FA             14     djnz r0,rep
+010E 6002             15     jz insert
+0110 8002             16     sjmp here
+0112                  17     insert:
+0112 2479             18     add a,#79H
+                      19     
+0114                  20     here:
+0114 80FE             21     sjmp here
+                      22     end
+A51 MACRO ASSEMBLER  TRIAL                                                                02/07/2021 22:21:18 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+HERE . . . . . . .  C ADDR   0114H   A   
+INSERT . . . . . .  C ADDR   0112H   A   
+NEXT . . . . . . .  C ADDR   010CH   A   
+REP. . . . . . . .  C ADDR   0108H   A   
+START. . . . . . .  C ADDR   0100H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

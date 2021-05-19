@@ -1,0 +1,96 @@
+A51 MACRO ASSEMBLER  Q2                                                                   02/08/2021 14:42:15 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Q2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Q2.asm SET(SMALL) DEBUG PRINT(.\Listings\Q2.lst) OBJECT(.\Objects\Q2.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h
+0000 020100            2             ljmp start
+0100                   3     org 0100h
+                       4             
+0100 759003            5             start: mov p1, #00000011b
+0103 309027            6                     jnb p1.0, port4off
+0106 309113            7                     jnb p1.1, port4on6off
+0109                   8                     port46on:
+0109 D294              9                             setb p1.4
+010B D296             10                             setb p1.6
+010D 3145             11                             acall delay1s
+010F C294             12                             clr p1.4
+0111 3145             13                             acall delay1s
+0113 C296             14                             clr p1.6
+0115 3145             15                             acall delay1s
+0117 3145             16                             acall delay1s
+0119 020100           17                             ljmp start
+                      18                     
+011C C296             19                     port4on6off: clr p1.6
+011E D294             20                             setb p1.4
+0120 3145             21                             acall delay1s
+0122 C294             22                             clr p1.4
+0124 3145             23                             acall delay1s
+0126 3145             24                             acall delay1s
+0128 3145             25                             acall delay1s
+012A 020100           26                             ljmp start
+                      27                             
+012D C294             28                     port4off: clr p1.4
+012F 30910F           29                     jnb p1.1, port46off
+                      30                     
+0132                  31                     port6on4off:
+0132 D296             32                             setb p1.6
+0134 3145             33                             acall delay1s
+0136 3145             34                             acall delay1s
+0138 C296             35                             clr p1.6
+013A 3145             36                             acall delay1s
+013C 3145             37                             acall delay1s
+013E 020100           38                             ljmp start
+                      39                             
+0141 C296             40                     port46off: clr p1.6
+0143 80FE             41                     here: sjmp here
+                      42                     
+0145                  43                     delay1s:
+0145 7928             44                             mov r1, #40
+0147                  45                             delay50000musec:
+0147 758901           46                                     mov tmod, #00000001b 
+014A 758C3C           47                                     mov th0, #03ch 
+014D 758AB8           48                                     mov tl0, #0b8h 
+0150 D28C             49                                     setb tr0 
+0152 308DFD           50                                     del: jnb tf0, del
+0155 C28C             51                                     clr tr0 
+0157 C28D             52                                     clr tf0 
+0159 D9EC             53                                     djnz r1, delay50000musec
+015B 22               54                     ret
+                      55                     
+                      56                     end
+A51 MACRO ASSEMBLER  Q2                                                                   02/08/2021 14:42:15 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DEL. . . . . . . .  C ADDR   0152H   A   
+DELAY1S. . . . . .  C ADDR   0145H   A   
+DELAY50000MUSEC. .  C ADDR   0147H   A   
+HERE . . . . . . .  C ADDR   0143H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+PORT46OFF. . . . .  C ADDR   0141H   A   
+PORT46ON . . . . .  C ADDR   0109H   A   
+PORT4OFF . . . . .  C ADDR   012DH   A   
+PORT4ON6OFF. . . .  C ADDR   011CH   A   
+PORT6ON4OFF. . . .  C ADDR   0132H   A   
+START. . . . . . .  C ADDR   0100H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
