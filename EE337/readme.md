@@ -1,4 +1,4 @@
-# Organisation Overview
+# Organisation 
 
 * The course overview can be found [here](https://ee337.github.io/overview.html)
 * The environment setup required to run these projects can be found [here](https://ee337.github.io/tools.html)
