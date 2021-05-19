@@ -2,10 +2,10 @@
 
 All the unnecessarily excessive coding I did in SEM 4 at IITB
 
-Contents: 
+## Contents: 
 
-Digital Circuits Lab Work
-Microprocessors Lab Work
-Microprocessors Assignments
-Data Structures and Algorithm Assignments
-Medical Image Computing Assignments and Project
+* Digital Circuits Lab Work
+* Microprocessors Lab Work
+* Microprocessors Assignments
+* Data Structures and Algorithm Assignments
+* Medical Image Computing Assignments and Project
