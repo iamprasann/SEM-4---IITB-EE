@@ -1,0 +1,300 @@
+%% Please comment the next four lines, otherwise the compilation will not go through.
+
+% Minor  
+% Prasann Viswanathan  
+% 190070047 
+% Honour Code
+
+% I pledge on my honour that I have not given or received any unauthorized assistance on this assignment or any previous task. 
+
+
+\documentclass[a4paper,10pt]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6 in}
+\setlength{\textheight}{9 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+\usepackage[linewidth=1pt, framemethod=tikz]{mdframed}
+\usepackage{lipsum}
+\usepackage[many]{tcolorbox}
+\usepackage{amsmath,amsfonts,caption}
+\usepackage[document]{ragged2e}
+\usepackage{mathtools}
+\usepackage[ruled, vlined]{algorithm2e}
+\usepackage{amssymb,multirow,array,tikz}
+\usepackage{epsfig,amsthm}
+\usepackage{commath}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{sectsty}
+% \usepackage[noend]{algpseudocode}
+% \usepackage{algorithm}
+
+
+
+\definecolor{light-gray}{gray}{0.95}
+\surroundwithmdframed[
+    hidealllines=true,
+    backgroundcolor=light-gray,
+    innerleftmargin=15pt
+]{lstlisting}
+
+\newcommand{\task}[2]{
+   \pagestyle{myheadings}
+   \thispagestyle{plain}
+   \newpage
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{\vspace{2mm}
+    \hbox to 5.72 in { {\bf CS213: Data Structures and Algorithms
+		\hfill Deadline: #2} }
+       \vspace{4mm}
+       \hbox to 5.72 in { {\Large \hfill  \textbf{#1}  \hfill} }
+       \vspace{2mm}
+       \hbox to 5.72 in { {\it Instructor: Prof. Sharat Chandran} }
+      \vspace{2mm}}
+   }
+   \end{center}
+}
+\newenvironment{answer}[1][height fill] {
+    \begin{tcolorbox}[#1]
+}
+{
+    \end{tcolorbox}
+}
+
+\sectionfont{\fontsize{12}{15}\selectfont}
+
+\begin{document}
+\task{Task \#2}{12:00 PM, Feb-09 2021} 
+
+\section{Composite Recurrence}
+
+Consider two functions f(int n), g(int n) defined as:
+\begin{lstlisting}[language=Python]
+
+def f(int n):
+    if n == 1:
+        return 1
+    return f(n-1) + g(n-1)
+    
+def g(int n):
+    if n == 1:
+        return 1
+    if (n%2 == 0):
+        return g(n/2)
+    return g((n+1)/2)
+\end{lstlisting}
+What is the big-Oh complexity of $f(n)$?
+%% ===============================================================================
+%% Your answer ===================================================================
+%% ===============================================================================
+\begin{answer}
+    Put your answer here!!!\\
+    Recurrence: $$f(1) = O(1)$$
+    $$ f(n) = f(n-1)+g(n-1)$$
+    $$ g(n) = g(n/2)+O(1)$$
+    Note that we are ignoring floor function as we simply wish to find the big-Oh for $f(n)$.\\
+    Guess: $$g(n) = \log{n}$$
+    Proof: By induction the base case is trivial, the inductive hypothesis is:
+    \begin{align*}
+    	g(n) = \log{n} = \log{2(n/2)} = \log{n/2}+1 = g(n/2)+O(1) \qed
+    \end{align*}
+    $$ \therefore f(n) = f(n-1)+\log{n-1} $$
+    \begin{align*}
+    	f(n)-f(n-1)&=\log{n-1}\\
+    	\vdots\\
+    	f(2)-f(1)&=1\\
+    	\implies f(n)&=\displaystyle\sum_{k=2}^{n-1}\log{k}+f(1)\\
+    	\implies f(n)&=O(n\log{n}) \qed
+    \end{align*}
+
+\end{answer}
+
+
+
+
+\section{More Recurrence}
+Let
+$$T(n) = T(\frac{n}{4}) + T(\frac{n}{2}) + 1$$
+Take the base case as $T(1) = 1$ and you can assume n to be an even power of 2 so that the inputs to $T$ are always integers.\\
+Find $T(n)$ in terms of $\Omega$  notation.
+
+%% ===============================================================================
+%% Your answer ===================================================================
+%% ===============================================================================
+\begin{answer}
+    Put your answer here!!!\\
+    Since we wish to find a lower bound for the given function, ($\Omega$), note that:
+    $$T(n/2) \geq T(n/4) \implies T(n) \geq 2T(n/4)+1$$
+    Let
+    \begin{align*}
+    	F(n) \geq 2F(n/4)+1 \\
+    	\text{by master's theorem:} \\
+    	F(n) = aF(n/b)+f(n)\\
+    	\text{here } a=2, b=4 \text{ and } f(n)=1
+    \end{align*}
+    for $\epsilon=1/2>0$, 
+    $$ f(n) = 1 \in O(n^{\log_b{a}-\epsilon})$$
+    $$ \implies F(n) \in \Theta(\sqrt{n}) $$
+    $$ \implies T(n) \in \Omega(\sqrt{n}) \qed$$
+
+    Also note that this is not a tight lower bound as the given function can be upper bounded by O(n) by noting that 
+    $$ T(n) \leq 2T(n/2)+1 $$
+    and applying master's theorem on the same.
+\end{answer}
+
+
+
+\section{Transformed Recurrences}
+Let 
+$$T(n) = 2T(\sqrt{n}) + c$$
+and the base case:
+$$T(2) = T(1) = 1$$
+Give a bound on $T(n)$ in terms of $\Theta$ notation. Prove how you obtained the bound.
+
+For simplicity you may consider $n$ to be of a form that ensures only integers are found when you unroll the recursion (that is the inputs to $T$ are always integers).
+
+%% ===============================================================================
+%% Your answer ===================================================================
+%% ===============================================================================
+\begin{answer}
+    Put your answer here!!!\\
+     (Note that I am making the assumption that $n^{1/2^{k}}$=1 or =2 for some $k \in \mathbb{N}$)\\
+    \begin{align*}
+    	T(n) &= 2T(\sqrt{n})+c\\
+    	&= 2(2T(n^{1/4})+c)+c\\
+    	\vdots \\
+    	&= 2^{\log{\log{n}}}+c\cdot(1+2+\cdots+2^{\log{\log{n}}-1})\\
+    	&= (c+1)\cdot(2^{\log{\log{n}}})-c
+    \end{align*}
+
+    Therefore, we simply have 
+    $$ T(n) \in \Theta(2^{\log{\log{n}}}) $$
+    $$ T(n) \in \Theta(\log{n}) $$
+
+\end{answer}
+
+
+
+\section{His Master's Voice}
+% Consider the following recurrences:
+% \begin{enumerate}[label=(\roman*)]
+%     \item $T(n) = 4T(\frac{n}{2}) + n^{2}\log^4{n}$
+%     \item $T(n) = T(\frac{n}{2}) + \tanh{n}$
+%     \item $T(n) = T(\frac{n}{2}) + n(2-\cos{n})$
+% \end{enumerate}
+% The base case for each of these is $T(1) = \Theta(1)$
+
+For each of the recurrences below, state whether the master theorem is applicable or not. If yes, state to which of the three cases the recursion belongs to and find the asymptotic bound. If not, state reasons why the theorem is not applicable. In the cases where master theorem is not applicable, can you find the asymptotic bound using other methods? \textit{(this is not necessary but may fetch you bonus marks)}
+
+The base case for each of these recurrences is $T(1) = \Theta(1)$
+
+\begin{enumerate}[label=(\roman*), wide]
+\item $T(n) = 4T(\frac{n}{2}) + n^{2}\log^4{n}$
+%% ===============================================================================
+%% Your answer ===================================================================
+%% ===============================================================================
+\begin{answer}
+    Put your answer here!!! \\
+    \textbf{Claim: } The master's theorem is not applicable\\
+    \textbf{Proof: } Here $a=4$, $b=2$ and $f(n)=n^{2}\log^4{n}$. By master's theorem we need to check three cases and see which is applicable to $f(n)$.\\
+    \begin{enumerate}
+    	\item Case 1: Assume $\exists \epsilon>0 : f(n) \in O(n^{\log_b{a}-\epsilon})$. \\
+    	But $f(n)=n^{2}\log^4{n} \implies f(n) \geq n^{2} (\forall n > 2)$ \\
+    	So $f(n) \notin O(n^{2-\epsilon})$ for any $\epsilon>0$ $\bot$.
+    	\item Case 2: We know already that $f(n) \notin \Theta(n^{2})$ so Case 2 isn't applicable.
+    	\item Case 3: Observe that
+    	\begin{align*}
+    		\exists n_0 \in \mathbb{N} : n^{\epsilon} > \log^4{n} \text{ }\forall n>n_0 \\
+    		\implies f(n) \notin \Omega(n^{2+\epsilon})
+    	\end{align*}
+    	Case 3 fails as well. So master's theorem fails.
+    \end{enumerate} 
+\end{answer}
+
+\item $T(n) = T(\frac{n}{2}) + \tanh{n}$
+%% ===============================================================================
+%% Your answer ===================================================================
+%% ===============================================================================
+\begin{answer}
+    Put your answer here!!!\\
+    Note:
+    \begin{align*}
+     -1	\leq \tanh{n} \leq 1 \implies \tanh{n} \in \Theta(1)
+    \end{align*}
+    Also, for the masters theorem here $a=1$, $b=2$, $f(n)=\tanh{n} \in \Theta(n)$.\\
+    Therefore we observe that Case 2 of the master's theorem is applicable as we have:
+    \begin{align*}
+    	f(n) \in \left( \Theta(1) = \Theta(n^{\log_b a}) \right) \\
+    	\therefore T(n) \in \Theta(\log{n}) \qed
+    \end{align*}
+\end{answer}
+
+\item $T(n) = T(\frac{n}{2}) + n(2-\cos{n})$
+%% ===============================================================================
+%% Your answer ===================================================================
+%% ===============================================================================
+\begin{answer}
+    Put your answer here!!!\\
+    \textbf{Claim: } The master's theorem is not applicable\\
+    \textbf{Proof: } Here $a=1$, $b=2$ and $f(n)=n(2-\cos{n})$. By master's theorem we need to check three cases and see which is applicable to $f(n)$.\\
+    \begin{enumerate}
+    	\item Case 1: Assume $\exists \epsilon>0 : f(n) \in O(n^{\log_b{a}-\epsilon})$. \\
+    	But $f(n)=n(2-\cos{n}) \implies n \leq f(n) \leq 3n (\forall n \in \mathbb{N})$ \\
+    	So $f(n) \in \Theta(n)$ \\
+    	$$ \implies f(n) \notin O(n^{0-\epsilon}) $$
+    	A contadiction. So case 1 fails.
+    	\item Case 2: We know already that $f(n) \notin \left(\Theta(n^{0}) = \Theta(1) \right)$ so Case 2 isn't applicable.
+    	\item Case 3: $f(n) \in \Omega(n^{0+\epsilon})$ for any $\epsilon > 1$ however we are unable to satisfy the second condition that is:
+    	$$ \exists c<1 : af(n/b) \leq cf(n) \text{ } \forall n>n_0$$
+    	For n=6, we need $c > 1.45$ to find any suitable threshold $n_0$. Thus case 3 fails as well.
+    \end{enumerate}
+\end{answer}
+\end{enumerate}
+
+\section{I Hate Loops!!!}
+    \begin{algorithm}[H]
+    \caption{: I Hate Loops!!!}
+        \SetAlgoLined
+        int a = 0;\\
+        \For{i=1; i$\leq$n; i++} {
+            \For{j=i; j$\leq$n; j+=i} {
+                a++;
+            }
+        }
+    \end{algorithm}
+
+    
+Find the asymptotic complexity of the above code in terms of $n$.
+
+%% ===============================================================================
+%% Your answer ===================================================================
+%% ===============================================================================
+\begin{answer}
+    Put your answer here!!!\\
+    We shall break this problem step by step to observe a pattern and make a guess:
+    \begin{align*}
+    	i&=1 \implies \text{inner loop runs for } n \text{ iterations} \\
+    	i&=2 \implies \text{inner loop runs for } \left\lfloor{\dfrac{n}{2}}\right\rfloor \text{ iterations} \\
+    	i&=3 \implies \text{inner loop runs for } \left\lfloor{\dfrac{n}{3}}\right\rfloor \text{ iterations} \\
+    	&\vdots \\
+    	i&=n \implies \text{inner loop runs for } \left\lfloor{\dfrac{n}{n}}\right\rfloor \text{ iterations} \\
+    \end{align*}
+    Ignoring floors and summing each inner loop run gives:
+    \begin{align*}
+    	&= n\left(1+\dfrac{1}{2}+\dfrac{1}{3}+\cdots+\dfrac{1}{n}\right)
+    \end{align*}
+    It is also well know that the upper bound of the harmonic series upto n terms is 
+    $$ \log{n+1} $$
+    The asymptotic complexity is therefore,
+    $$ \Theta(n\log{n}) \qed$$
+\end{answer}
+
+
+\end{document}
+
