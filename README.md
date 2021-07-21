@@ -8,4 +8,4 @@ All the unnecessarily excessive coding I did in SEM 4 at IITB
 * [Microprocessors Lab Work](https://github.com/iamprasann/SEM-4---IITB-EE/tree/main/EE337)
 * [Microprocessors Assignments](https://github.com/iamprasann/SEM-4---IITB-EE/tree/main/EE309)
 * [Data Structures and Algorithm Assignments](https://github.com/iamprasann/SEM-4---IITB-EE/tree/main/CS213M)
-* Medical Image Computing Assignments and Project
+* [Medical Image Computing Assignments and Project](https://github.com/iamprasann/SEM-4---IITB-EE/tree/main/CS736)
